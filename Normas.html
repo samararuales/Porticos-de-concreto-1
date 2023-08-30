@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+  <!-- site metas -->
+  <link rel="icon" href="./img/umjpg.jpg">
+
+  <title>Normas</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+
+  <!-- bootstrap css -->
+  <!-- bootstrap css -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+    crossorigin="anonymous"></script>
+  <!-- <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css" />
+  <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script> -->
+
+  <!-- awesome fontfamily -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- bootstrap css -->
+  <link rel="stylesheet" href="./assets/dist/css/bootstrap.min.css">
+  <!-- style css -->
+  <link rel="stylesheet" href="./assets/dist/css/style.css">
+  <!-- responsive-->
+  <link rel="stylesheet" href="./assets/dist/css/responsive.css">
+
+
+</head>
+<!-- body -->
+
+<body class="main-layout">
+  <!-- loader  -->
+  <div class="loader_bg">
+    <div class="loader"><img src="./img/loading.gif" alt="..." /></div>
+  </div>
+  <!-- end loader -->
+  <div id="mySidepanel" class="sidepanel">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+    <a href="index.html">Inicio</a>
+    <a href="Introduccion.html">Introducción</a>
+    <a href="Normas.html">Normas</a>
+    <div class="dropdown">
+      <a href="#" type="button" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        Cálculos
+      </a>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="calculos.html"><button type="button" class="btn btn-light">Diseño de
+              Vigas</button></a>
+        </li>
+        <li><a class="dropdown-item" href="calculosColumnas.html"><button type="button" class="btn btn-light">Diseño de
+              Columnas</button></a>
+        </li>
+      </ul>
+    </div>
+    <div class="dropdown">
+      <a href="#" type="button" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        Información
+      </a>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="manual.html"><button type="button" class="btn btn-light">Manual de
+              Usuario</button></a>
+        </li>
+        <li><a class="dropdown-item" href="autores.html"><button type="button"
+              class="btn btn-light">Autores</button></a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+  <!-- header -->
+  <!-- <header>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="logo">
+            <a target="_blank" href="https://www.umariana.edu.co/index.html"><img src="./img/logo_footer.png"
+                width="180px" /></a>
+          </div>
+        </div>
+        <div class="col-sm-9">
+          <ul class="text_align_right">
+            <li class="li_menu"><a href="index.html"><button type="button"
+                  class="btn d_none_primary">Inicio</button></a></li>
+            <li class="li_menu"><a href="Introduccion.html"><button type="button"
+                  class="btn d_none_light">Introducción</button></a></li>
+            <li class="li_menu"><a href="Normas.html"><button type="button" class="btn d_none_light">Normas</button></a>
+            </li>
+
+            <li class="li_menu">
+              <div class="dropdown">
+                <button class="btn d_none_light dropdown-toggle" type="button" id="dropdownMenuButton1"
+                  data-bs-toggle="dropdown" aria-expanded="false">
+                  Cálculos
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item" href="calculos.html"><button type="button" class="btn">Diseño de
+                        Vigas</button></a>
+                  </li>
+                  <li><a class="dropdown-item" href="calculosColumnas.html"><button type="button" class="btn">Diseño de
+                        Columnas</button></a>
+                  </li>
+                </ul>
+              </div>
+            <li class="li_menu">
+              <div class="dropdown">
+                <button class="btn d_none_light dropdown-toggle" type="button" id="dropdownMenuButton1"
+                  data-bs-toggle="dropdown" aria-expanded="false">
+                  Información
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item" href="manual.html"><button type="button" class="btn">Manual
+                        de Usuario</button></a>
+                  </li>
+                  <li><a class="dropdown-item" href="autores.html"><button type="button" class="btn">Autores</button></a>
+                  </li>
+                </ul>
+              </div>
+
+            </li>
+            <li class="li_menu"> <button class="openbtn" onclick="openNav()"><img src="./img/menu_btn.png"></button>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+
+  </header> -->
+  <nav class="navbar navbar-expand-lg barra_nav">
+    <div class="container-fluid">
+      <div class="">
+        <a target="_blank" href="https://www.umariana.edu.co/index.html"><img src="./img/logo_footer.png"
+            width="180px" /></a>
+      </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"
+        style="background-color: white; color:black;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-list"
+          viewBox="0 0 16 16">
+          <path fill-rule="evenodd"
+            d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z">
+          </path>
+        </svg></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a href="index.html"><button type="button" class="btn d_none_primary me-5">Inicio</button></a>
+          </li>
+          <li class="nav-item">
+            <a href="Introduccion.html"><button type="button" class="btn d_none_light me-5">Introducción</button></a>
+          </li>
+          <li class="nav-item">
+            <a href="Normas.html"><button type="button" class="btn d_none_light me-5">Normas</button>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="btn dropdown-toggle d_none_light me-5" href="#" id="navbarDropdown1" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Cálculos
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
+              <li><a class="dropdown-item" href="calculos.html"><button type="button" class="btn">Diseño de
+                    Vigas</button></a></li>
+              <li><a class="dropdown-item" href="calculosColumnas.html"><button type="button" class="btn">Diseño de
+                    Columnas</button></a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <div class="dropdown">
+              <button class="btn d_none_light dropdown-toggle me-5" type="button" id="dropdownMenuButton1"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Información
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="manual.html"><button type="button" class="btn">Manual
+                      de Usuario</button></a>
+                </li>
+                <li><a class="dropdown-item" href="autores.html"><button type="button" class="btn">Autores</button></a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <button class="openbtn" onclick="openNav()"><img src="./img/menu_btn.png"></button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- end header -->
+  <!-- start slider section -->
+
+  <div class="normas">
+
+
+    <div class="container1">
+      <div class="introduccion">
+        <h1 class="titulo">Norma para <br><span class="yello">diseño de pórticos de
+            concreto</span></h1>
+        <div class="text-center">
+          <h2 style="font-size: 25px; color: black; font-weight: bold;">Reglamento NSR-10</h2>
+          <a href="https://www.academia.edu/7206246/Decreto_092_de_20110" target="_blank" rel="noopener noreferrer"
+            style="font: 22px italic">Seguir el link Decreto_092_de_20110 </a>
+        </div>
+        <br>
+        <hr>
+        <div class="grupo-parrafo">
+          <h2>La norma utilizada para el diseño de pórticos de concreto en Colombia es la Norma Sismo Resistente NSR-10
+            del año 2010, la cual establece los requisitos mínimos para el diseño y la construcción de estructuras sismo
+            resistentes en el país, con el objetivo de proteger la vida humana y minimizar los daños materiales en caso
+            de un sismo.
+          </h2>
+        </div>
+        <div class="grupo-parrafo">
+          <h2>La NSR-10 se divide en varias secciones, cada una de las cuales aborda diferentes aspectos del diseño y la
+            construcción de estructuras sismo resistentes, como la selección de cargas, la resistencia de los
+            materiales, el diseño de elementos estructurales, los detalles constructivos, entre otros.
+          </h2>
+        </div>
+        <div class="grupo-parrafo">
+          <h2>La norma también establece los requisitos para la evaluación de la amenaza sísmica en una determinada
+            zona, lo que permite diseñar estructuras que sean adecuadas para las condiciones sísmicas específicas de la
+            ubicación.
+          </h2>
+        </div>
+        <div class="grupo-parrafo">
+          <h2>El diseño de pórticos de concreto en Colombia debe cumplir con los requisitos establecidos en la NSR-10
+            para garantizar que la estructura sea segura y sismo resistente. El incumplimiento de los requisitos de la
+            norma puede poner en riesgo la seguridad de las personas y la integridad de la estructura en caso de un
+            terremoto. Por lo tanto, es esencial que los diseñadores y constructores estén familiarizados con la norma y
+            la apliquen adecuadamente en todos los aspectos del diseño y la construcción.
+          </h2>
+        </div>
+        <br>
+        <p class="text-center"><i>Figura 9. Norma NSR-10.</i></p>
+
+        <div class="grupo-parrafo d-flex justify-content-center">
+          <a href="https://www.academia.edu/7206246/Decreto_092_de_20110" target="_blank" rel="noopener noreferrer"
+            style="font: 22px italic"><img src="./img/norma_nsr_10.png" width="375px" srcset=""> </a>
+        </div>
+        <br><br>
+      </div>
+      <!-- <a class="read_more ban_btn" href="Introduccion.html">Leer Más</a> -->
+    </div>
+
+  </div>
+  <!-- end slider section -->
+  <!-- six_box-->
+  <div id="about" class="about top_layer">
+    <div class="container">
+      <br>
+      <div class="row">
+        <div class="col-sm-12">
+          <ul class="nav nav-tabs md-tabs border_none" id="myTabMD" role="tablist">
+            <li class="nav-item lisertab">
+              <a class="nav-link servi_tab active" id="home-tab-md" data-toggle="tab" href="#" role="tab"
+                aria-controls="home-md" aria-selected="true" onclick="normas('a')">Titulo A</a>
+            </li>
+            <li class="nav-item lisertab">
+              <a class="nav-link servi_tab" id="profile-tab-md" data-toggle="tab" href="#" role="tab"
+                aria-controls="profile-md" aria-selected="false" onclick="normas('b')">Titulo B</a>
+            </li>
+            <li class="nav-item lisertab">
+              <a class="nav-link servi_tab" id="profile-tab-md" data-toggle="tab" href="#" role="tab"
+                aria-controls="profile-md" aria-selected="false" onclick="normas('c')">Titulo C</a>
+            </li>
+            <li class="nav-item lisertab">
+              <a class="nav-link servi_tab" id="contact-tab-md" data-toggle="tab" href="#" role="tab"
+                aria-controls="contact-md" aria-selected="false" onclick="normas('j')">Titulo J</a>
+            </li>
+          </ul>
+          <br>
+          <div class="titlepage">
+            <h2>Normas</h2>
+            <h3>Click para leer el decreto
+              >>><a class="ds-body-lg-link js-wsj-grid-card-title js-related-work-grid-card-title title"
+                href="https://www.academia.edu/7206246/Decreto_092_de_20110"><span class="yello"><b> Decreto 092 de
+                    20110</b></span></a></h3>
+          </div>
+        </div>
+        <div class=" col-sm-12">
+
+          <div class="about_box">
+            <div class="about_box_text">
+              <div id="Normas">
+                <h3>REQUISITOS GENERALES</h3>
+                <iframe src="https://www.scg.org.co/Titulo-A-NSR-10-Decreto%20Final-2010-01-13.pdf"
+                  style="border: none; width: 95%; height: 780px;"></iframe>
+              </div>
+              <br>
+
+
+
+
+            </div>
+            <div class="row d_flex"></div>
+            <div class="col-md-5"></div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <!-- end six_box-->
+
+
+  <!-- footer -->
+  <footer>
+    <div class="footer">
+      <div class="container1">
+        <div class="row">
+          <div class="col-md-10 offset-md-1">
+            <ul class="social_icon text_align_center">
+              <li> <a target="_blank" href="https://www.facebook.com/UniversidadMariana.Pasto"><i
+                    class="fa fa-facebook-f"></i></a></li>
+              <li> <a target="_blank" href="https://twitter.com/UMarianaPasto"><i class="fa fa-twitter"></i></a></li>
+              <li> <a target="_blank" href="https://www.youtube.com/user/UniversidadMariana/"><i class="fa fa-youtube"
+                    aria-hidden="true"></i></a></li>
+              <li> <a target="_blank" href="https://www.instagram.com/universidadmariana/"><i class="fa fa-instagram"
+                    aria-hidden="true"></i></a></li>
+              <li> <a target="_blank" href="https://www.tiktok.com/@universidadmariana"><svg
+                    xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-tiktok"
+                    viewBox="0 0 16 16" aria-hidden="true">
+                    <path
+                      d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3V0Z" />
+                  </svg></a></li>
+            </ul>
+          </div>
+          <div class="colf_4">
+            <div class="reader text-center">
+              <ul class="xple_menu">
+
+                <a target="_blank" id="universidad" href="https://www.umariana.edu.co/index.html"><img
+                    src="./img/logo.jfif" alt="#" width="400px" /><span>Página principal Universidad Mariana</span></a>
+              </ul>
+
+            </div>
+          </div>
+          <div class="col-md-2 col-sm-6">
+            <div class="reader">
+              <h3>Explorar</h3>
+              <ul class="xple_menu">
+                <li><a href="index.html">Inicio</a>
+                </li>
+                <li><a href="Introduccion.html">Introducción</a>
+                </li>
+                <li><a href="Normas.html">Normas</a>
+                </li>
+                <li>
+                  <div class="dropdown">
+                    <a href="#" type="button" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                      Cálculos
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="calculos.html"><button type="button"
+                            class="btn btn-light">Diseño de
+                            Vigas</button></a>
+                      </li>
+                      <li><a class="dropdown-item" href="calculosColumnas.html"><button type="button"
+                            class="btn btn-light">Diseño de
+                            Columnas</button></a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <div class="dropdown">
+                    <a href="#" type="button" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                      Información
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="manual.html"><button type="button" class="btn btn-light">Manual
+                            de Usuario</button></a>
+                      </li>
+                      <li><a class="dropdown-item" href="autores.html"><button type="button"
+                            class="btn btn-light">Autores</button></a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <div class="reader">
+              <h3 style="padding-left: 55px;">Anexos</h3>
+              <ul class="re_post">
+                <li><img src="./img/re_img1.jpg" alt="#" /></li>
+                <li><img src="./img/re_img2.jpg" alt="#" /></li>
+                <li><img src="./img/re_img3.jpg" alt="#" /></li>
+                <li><img src="./img/re_img4.jpg" alt="#" /></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <div class="reader">
+              <h3 class="text-center">Contacto</h3>
+              <ul class="" id="em">
+                <li> <i class="fa fa-map-marker" aria-hidden="true" style="font-size: 30px;"></i>&nbsp;&nbsp;
+                  &nbsp; Calle 18 No. 34-104 Pasto (N)<br>&nbsp; Bloque María Inmaculada - Oficina 204</li><br>
+                <li><i class="fa fa-phone" aria-hidden="true" style="font-size: 30px;"></i>&nbsp;&nbsp;&nbsp;
+                  &nbsp; 52 +7244460 Ext 174</a></li>
+                <li> <a class="correo" href="#"><i class="fa fa-envelope" aria-hidden="true"
+                      style="font-size: 30px;"></i><span class="it_correo">
+                      ingenieriacivil@umariana.edu.co</span></a>
+                </li>
+                <li> <a class="correo" href="#"><i class="fa fa-envelope" aria-hidden="true"
+                      style="font-size: 30px;"></i><span class="it_correo">
+                      avgomeza@umariana.edu.co</span></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="copyright text_align_center">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-10 offset-md-1">
+              <p>Copyright 2023 All Right Reserved</p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- end footer -->
+  <!-- Javascript files-->
+  <script src="./assets/dist/js/jquery.min.js"></script>
+  <script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./assets/dist/js/custom.js"></script>
+  <script src="./assets/dist/js/jquery-3.0.0.min.js"></script>
+  <script>
+    function normas(titulo) {
+      console.log(titulo);
+    
+      if (titulo=="a"){
+          document.getElementById("Normas").innerHTML="<h3>REQUISITOS GENERALES</h3><iframe src='https://www.scg.org.co/Titulo-A-NSR-10-Decreto%20Final-2010-01-13.pdf' style='border: none; width: 95%; height: 780px;'></iframe>";
+      }
+      if (titulo=="b"){
+          document.getElementById("Normas").innerHTML="<h3>CARGAS</h3><iframe src='./manual/NSR-10_Titulo_B.pdf ' style='border: none; width: 95%; height: 780px;'></iframe>";
+      }
+      if (titulo=="c"){
+          document.getElementById("Normas").innerHTML="<h3>Concreto Estructural</h3><iframe src='./manual/NSR-10_Titulo_C.pdf' style='border: none; width: 95%; height: 780px;'></iframe>";
+      }
+      if (titulo=="j"){
+          document.getElementById("Normas").innerHTML="<h3>REQUISITOS DE PROTECCIÓN CONTRA INCENDIOS </h3><iframe src='./manual/NSR-10_Titulo_J.pdf' style='border: none; width: 95%; height: 780px;'></iframe>";
+      }
+      }
+  </script>
+</body>
+
+</html>

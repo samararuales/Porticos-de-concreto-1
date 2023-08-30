@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+   <!-- site metas -->
+   <link rel="icon" href="./img/umjpg.jpg">
+
+   <title>Columnas</title>
+   <meta name="keywords" content="">
+   <meta name="description" content="">
+   <meta name="author" content="">
+   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+
+   <!-- bootstrap css -->
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+      crossorigin="anonymous"></script>
+   <!-- <script src="./js/columnas.js"></script> -->
+
+   <!-- <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css" />
+   <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script> -->
+
+   <!-- awesome fontfamily -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <!-- bootstrap css -->
+   <link rel="stylesheet" href="./assets/dist/css/bootstrap.min.css">
+   <!-- style css -->
+   <link rel="stylesheet" href="./assets/dist/css/style.css">
+   <!-- responsive-->
+   <link rel="stylesheet" href="./assets/dist/css/responsive.css">
+   <!-- <script src="./Codigo.js"></script> -->
+   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<!-- body -->
+
+<body class="main-layout">
+   <!-- loader  -->
+   <div class="loader_bg">
+      <div class="loader"><img src="./img/loading.gif" alt="..." /></div>
+   </div>
+   <!-- end loader -->
+   <div id="mySidepanel" class="sidepanel">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+      <a href="index.html">Inicio</a>
+      <a href="Introduccion.html">Introducción</a>
+      <a href="Normas.html">Normas</a>
+      <div class="dropdown">
+         <a href="#" type="button" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            Cálculos
+         </a>
+         <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="calculos.html"><button type="button" class="btn btn-light">Diseño de
+                     Vigas</button></a>
+            </li>
+            <li><a class="dropdown-item" href="calculosColumnas.html"><button type="button" class="btn btn-light">Diseño
+                     de
+                     Columnas</button></a>
+            </li>
+         </ul>
+      </div>
+      <div class="dropdown">
+         <a href="#" type="button" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            Información
+         </a>
+         <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="manual.html"><button type="button" class="btn btn-light">Manual de
+                     Usuario</button></a>
+            </li>
+            <li><a class="dropdown-item" href="autores.html"><button type="button"
+                     class="btn btn-light">Autores</button></a>
+            </li>
+         </ul>
+      </div>
+
+   </div>
+   <!-- <header>
+      <div class="container-fluid">
+         <div class="row">
+            <div class="col-sm-3">
+               <div class="logo">
+                  <a target="_blank" href="https://www.umariana.edu.co/index.html"><img src="./img/logo_footer.png"
+                        width="180px" /></a>
+               </div>
+            </div>
+            <div class="col-sm-9">
+               <ul class="text_align_right">
+                  <li class="li_menu"><a href="index.html"><button type="button"
+                           class="btn d_none_primary">Inicio</button></a></li>
+                  <li class="li_menu"><a href="Introduccion.html"><button type="button"
+                           class="btn d_none_light">Introducción</button></a></li>
+                  <li class="li_menu"><a href="Normas.html"><button type="button"
+                           class="btn d_none_light">Normas</button></a>
+                  </li>
+
+                  <li class="li_menu">
+                     <div class="dropdown">
+                        <button class="btn d_none_light dropdown-toggle" type="button" id="dropdownMenuButton1"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                           Cálculos
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                           <li><a class="dropdown-item" href="calculos.html"><button type="button" class="btn">Diseño de
+                                    Vigas</button></a>
+                           </li>
+                           <li><a class="dropdown-item" href="calculosColumnas.html"><button type="button"
+                                    class="btn">Diseño de
+                                    Columnas</button></a>
+                           </li>
+                        </ul>
+                     </div>
+                  <li class="li_menu">
+                     <div class="dropdown">
+                        <button class="btn d_none_light dropdown-toggle" type="button" id="dropdownMenuButton1"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                           Información
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                           <li><a class="dropdown-item" href="manual.html"><button type="button" class="btn">Manual
+                                    de Usuario</button></a>
+                           </li>
+                           <li><a class="dropdown-item" href="autores.html"><button type="button" class="btn">Autores</button></a>
+                           </li>
+                        </ul>
+                     </div>
+
+                  </li>
+                  <li class="li_menu"> <button class="openbtn" onclick="openNav()"><img
+                           src="./img/menu_btn.png"></button></li>
+               </ul>
+
+            </div>
+         </div>
+      </div>
+
+   </header> -->
+   <nav class="navbar navbar-expand-lg barra_nav">
+      <div class="container-fluid">
+         <div class="">
+            <a target="_blank" href="https://www.umariana.edu.co/index.html"><img src="./img/logo_footer.png"
+                  width="180px" /></a>
+         </div>
+         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"
+            style="background-color: white; color:black;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-list"
+               viewBox="0 0 16 16">
+               <path fill-rule="evenodd"
+                  d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z">
+               </path>
+            </svg></span>
+         </button>
+         <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+               <li class="nav-item">
+                  <a href="index.html"><button type="button" class="btn d_none_primary me-5">Inicio</button></a>
+               </li>
+               <li class="nav-item">
+                  <a href="Introduccion.html"><button type="button"
+                        class="btn d_none_light me-5">Introducción</button></a>
+               </li>
+               <li class="nav-item">
+                  <a href="Normas.html"><button type="button" class="btn d_none_light me-5">Normas</button>
+               </li>
+               <li class="nav-item dropdown">
+                  <a class="btn dropdown-toggle d_none_light me-5" href="#" id="navbarDropdown1" role="button"
+                     data-bs-toggle="dropdown" aria-expanded="false">
+                     Cálculos
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                     <li><a class="dropdown-item" href="calculos.html"><button type="button" class="btn">Diseño de
+                              Vigas</button></a></li>
+                     <li><a class="dropdown-item" href="calculosColumnas.html"><button type="button" class="btn">Diseño
+                              de
+                              Columnas</button></a></li>
+                  </ul>
+               </li>
+               <li class="nav-item">
+                  <div class="dropdown">
+                     <button class="btn d_none_light dropdown-toggle me-5" type="button" id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Información
+                     </button>
+                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="manual.html"><button type="button" class="btn">Manual
+                                 de Usuario</button></a>
+                        </li>
+                        <li><a class="dropdown-item" href="autores.html"><button type="button"
+                                 class="btn">Autores</button></a>
+                        </li>
+                     </ul>
+                  </div>
+               </li>
+               <li class="nav-item">
+                  <button class="openbtn" onclick="openNav()"><img src="./img/menu_btn.png"></button>
+               </li>
+            </ul>
+         </div>
+      </div>
+   </nav>
+   <!-- end header -->
+   <!-- start slider section -->
+   <div class="normas">
+
+
+      <div class="container">
+         <div class="introduccion">
+            <h1 class="titulo">Diseña aquí <br><span class="yello">tu pórtico de concreto</span></h1>
+            <div class="grupo-parrafo">
+               <p>¡Hola! Bienvenido al diseño de pórticos de concreto. Antes de comenzar, es importante que tengas en
+                  cuenta algunos aspectos básicos del cálculo de estructuras de concreto:</p><br>
+
+               <ul class="formulas">
+                  <li>
+                     <p>• La estructura de concreto debe ser diseñada teniendo en cuenta las cargas que actúan sobre
+                        ella, como el peso propio de la estructura, las cargas vivas (personas, mobiliario, etc.), las
+                        cargas muertas (instalaciones, elementos de fachada, etc.), las cargas de viento y las cargas
+                        sísmicas.</p><br>
+                  </li>
+                  <li>
+                     <p>• El concreto es un material resistente a la compresión, pero es débil en tracción. Por lo
+                        tanto, es necesario colocar barras de refuerzo de acero debido a que la estructura está sometida
+                        a tensiones de tracción.</p>
+                  </li><br>
+                  <li>
+                     <p>• El tamaño y la forma de las secciones transversales de las columnas y vigas se seleccionan
+                        para garantizar que la estructura tenga la capacidad necesaria para soportar las cargas que
+                        actúan sobre ella. Esto se logra mediante el cálculo de la sección transversal adecuada para
+                        resistir las tensiones máximas en la estructura.</p>
+                  </li><br>
+
+               </ul>
+            </div>
+            <div class="grupo-parrafo">
+               <p>Ahora, para diseñar tu pórtico de concreto, necesitamos conocer las características del proyecto, como
+                  las dimensiones de la viga y de columna, datos de los materiales como la resistencia a la compresión
+                  del concreto (f‘c) y el esfuerzo de fluencia del acero (Fy); el tamaño máximo del agregado, el
+                  recubrimiento para el refuerzo, la resistencia última (Mu), la cortante debido a envolvente y a
+                  combinación de cargas. Con esta información, se puede diseñar las vigas y columnas que soportarán las
+                  cargas y que actúan sobre la estructura y, a partir de ellas mantener la estabilidad de la estructura.
+               </p><br>
+            </div>
+
+
+         </div>
+         <!-- <a class="read_more ban_btn" href="Introduccion.html">Leer Más</a> -->
+      </div>
+
+   </div>
+   <!-- end slider section -->
+   <!-- contact -->
+   <div class="contact">
+      <div class="container">
+         <div class="grupo-parrafo">
+            <h2>Ten en cuenta que el diseño de estructuras de concreto es una tarea compleja que requiere conocimientos
+               especializados en ingeniería civil y será necesario para garantizar que el pórtico de concreto sea seguro
+               y cumpla con los requisitos legales y normativos aplicables.
+            </h2>
+         </div>
+         <br>
+         <hr>
+         <div class="row">
+            <div class="col-md-12">
+               <div class="titlepage text-center">
+                  <h2>Diseño de Columnas</h2>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <div class="container-fluid">
+         <div class="text-center">
+            <h3 class="flexion">Diseño Flexo - Axial</h3>
+         </div>
+
+         <div class="">
+
+            <div class="card">
+               <form onsubmit="event.preventDefault()">
+
+                  <div class="card-header text-center">
+                     <h3 class="card-title"><b> Para diseñar una columna, ingresa los siguientes datos: Dimensiones de
+                           la
+                           Columna</b></h3>
+                  </div>
+                  <div class="card-body text-center">
+                     <br>
+                     <div class="row">
+                        <div class="col-7">
+                           <div class="row d-flex justify-content-center">
+                              <div class="col-2">
+                                 <h4 class="mt-3">* Base (mm)</h4>
+                              </div>
+                              <div class="col-3">
+                                 <input type="number" class="form-control" min="25"
+                                    onkeydown="validarTeclaMenos(event,'b')" oninput="validarBaseAltura()"
+                                    onblur="validarValorPositivo('b','bh1'); validarBaseAltura();" id="b" name="b"
+                                    placeholder="" onended="" required autofocus />
+                                 <div id="bh1" class="text-center " style="color: red;"></div>
+
+                              </div>
+                              <div class="col-1"></div>
+                              <div class="col-2">
+                                 <h4 class="mt-3">* Altura (mm)</h4>
+                              </div>
+                              <div class="col-3">
+                                 <input type="number" class="form-control" id="h" name="h" min="25" required autofocus
+                                    onkeydown="validarTeclaMenos(event,'h')" oninput="validarBaseAltura();"
+                                    onblur="validarValorPositivo('h','bh2'); validarBaseAltura();" />
+                                 <div id="bh2" class="text-center " style="color: red;"></div>
+
+                              </div>
+                              <br>
+                              <div id="bh" class="text-center " style="color: red;"></div>
+
+                           </div>
+                           <hr>
+                           <div class="row d-flex justify-content-center">
+                              <div class="col-12">
+                                 <h4 class="nota" style="text-align: justify;">NOTA: Tenga en cuenta que para un sistema
+                                    de capacidad de disipación
+                                    especial
+                                    (DES) empleado
+                                    para una zona de amenaza sísmica alta, la columna debe cumplir con dimensiones de
+                                    30cm x 30cm o debe tener un área de 300cm<sup>2</sup> pero, como mínimo una sola
+                                    dimensión de 25cm
+                                 </h4>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-5">
+                           <h4 class="nota">Dimensiones base y altura de una columna</h4>
+
+                           <img src="./img/Imagen1_cols.png" alt="imagen1" width="400px">
+
+                        </div>
+                     </div>
+
+                  </div>
+
+                  <div class="card-header text-center">
+                     <h3> Seleccione Datos de los materiales</h3>
+                  </div>
+                  <div class="card-body text-center">
+                     <div class="row d-flex justify-content-center">
+                        <div class="columna-2">
+                           <h4 for="fc">Resistencia a la compresion (f'c) MPa</h4>
+                        </div>
+                        <div class="columna-1">
+                           <select class="mpa" name="fc" id="fc1" onchange="actualizar_fc(this); limpiar(); ">
+                              <option value="21">21</option>
+                              <option value="28">28</option>
+                           </select>
+                        </div>
+                        <div class="columna-2">
+                           <input type="number" class="form-control" id="fc" name="fc" value="21" min="0"
+                              onkeydown="validarTeclaMenos(event,'fc')" oninput="validarValorMinimo('fc',0,'val_fc')"
+                              onblur="validarValorPositivo('fc','val_fc'); validarValorMinimo('fc',0,'val_fc');" />
+                        </div>
+                        <div class="columna-1"></div>
+                        <div class="col-2">
+                           <h4 for="fy">Esfuerzo de fluencia del acero (fy) <br>MPa</h4>
+                        </div>
+                        <div class="columna-2">
+                           <select class="entrada" name="fy" id="fy">
+                              <!-- <option value="345">345 (A992)</option>
+                              <option value="248">248 (A36)</option> -->
+                              <option value="420">420</option>
+                           </select>
+                        </div>
+                        <div class="columna-1"></div>
+
+                        <div class="columna-2">
+                           <h4 class="mt-2">Tamaño máximo agregado (mm)</h4>
+                        </div>
+                        <div class="columna-2">
+                           <input type="number" class="form-control" id="ag" name="ag" min="10" value="25" required
+                              autofocus onkeydown="validarTeclaMenos(event,'ag')"
+                              oninput="validarValorMinimo('ag',10,'max_ag')"
+                              onblur="validarValorPositivo('ag','max_ag'); validarValorMinimo('ag',10,'max_ag');" />
+                        </div>
+                     </div>
+                     <br>
+                     <div class="row">
+                        <div class="col-5">
+                           <h4>Si desea ingresar otro valor de resistencia, escríbalo en el campo adicional</h4>
+                           <div id="val_fc" class="text-center" style="color: red;">
+                           </div>
+                        </div>
+                        <div class="col-1"></div>
+                        <div class="col-5">
+                           <div id="max_ag" class="text-center" style="color: red;">
+                           </div>
+                        </div>
+                     </div>
+
+
+                  </div>
+                  <div class="card-header text-center">
+                     <h3>Seleccione Datos para la cuantia mínima</h3>
+                  </div>
+                  <div class="card-body text-center">
+                     <div class="row">
+                        <div class="col-6">
+                           <div class="row">
+                              <div class="col-3-1">
+                                 <label for="recubrimirnto" class="mb-3">Recubrimiento (mm)</label>
+                              </div>
+                              <div class="col-3">
+                                 <select class="entrada" name="recubrimiento" id="recubrimiento" onchange="limpiar()">
+                                    <option value="40">40 </option>
+                                    <option value="75">75 (exp. al suelo)</option>
+                                 </select>
+                              </div>
+                              <div class="col-3">
+                                 <label for="numeroVarilla" class="">Número de varilla longitudinal</label>
+                              </div>
+                              <div class="col-1 mb-3">
+                                 <select class="entrada" name="numeroVarilla" id="numeroVarilla"
+                                    onchange="actualizar_varilla(this); limpiar()">
+                                    <option value="2">No. 2</option>
+                                    <option value="3">No. 3</option>
+                                    <option value="4">No. 4</option>
+                                    <option value="5">No. 5</option>
+                                    <option value="6">No. 6</option>
+                                    <option value="7">No. 7</option>
+                                    <option value="8">No. 8</option>
+                                 </select>
+                              </div>
+
+                           </div>
+                           <div class="row">
+
+                           </div>
+
+                           <div class="row">
+                              <div class="col-3-1">
+                                 <label for="diametro" class="">Diámetro de la varilla (mm)</label>
+                              </div>
+
+                              <div class="col-3">
+                                 <input type="text" class="form-control" id="diametro" name="diametro" value="6.4"
+                                    placeholder="" required disabled />
+                              </div>
+                              <div class="columna-1"></div>
+                              <div class="col-3-1">
+                                 <label for="area" class="">Área de la varilla (mm<sup>2</sup>)</label>
+                              </div>
+                              <div class="col-3-1">
+                                 <input type="text" class="form-control" id="area" name="area" value="32" placeholder=""
+                                    required disabled />
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col-3-1">
+                                 <label for="numeroVarillaEstribo" class="">Número Varilla de Estribo</label>
+                              </div>
+                              <div class="col-3 mb-3">
+                                 <select class="entrada" name="numeroVarillaEstribo" id="numeroVarillaEstribo"
+                                    onchange="actualizar_varilla_estribo(this); limpiar()">
+                                    <option value="2">No. 2</option>
+                                    <option value="3">No. 3</option>
+                                    <option value="4">No. 4</option>
+                                    <option value="5">No. 5</option>
+                                    <option value="6">No. 6</option>
+                                    <option value="7">No. 7</option>
+                                    <option value="8">No. 8</option>
+                                 </select>
+                              </div>
+                              <div class="columna-1"></div>
+
+                              <div class="col-3-1">
+                                 <label for="diametro_estribo" class="">Diámetro Varilla estribo (mm)</label>
+                              </div>
+                              <div class="col-3-1">
+                                 <input type="text" class="form-control" id="diametro_estribo" name="diametro_estribo"
+                                    value="6.4" placeholder="" required disabled />
+                                 <input type="text" class="form-control" id="area_estribo" name="area_estribo"
+                                    value="32" placeholder="" required disabled hidden />
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-6">
+                           <h4 class="nota">Recubrimiento y Distancia desde la parte superior de la columna al centroide
+                              de
+                              la varilla
+                           </h4>
+
+
+                           <div class="row">
+                              <div class="col-7">
+                                 <img src="./img/Imagen_rec_cols.png" width="400" alt="imagen2">
+                              </div>
+                              <div class="col-5">
+                                 <img src="./img/Imagen_d_cols.png" alt="imagen3" width="200" srcset="">
+                              </div>
+                           </div>
+                        </div>
+
+                     </div>
+                     <hr>
+                     <h3 class="nota">TABLA 1: Dimensiones de la varilla de acuerdo al Número</h3>
+                     <div class="row d-flex justify-content-center">
+                        <div class="col-6">
+
+                           <table class="peque">
+                              <thead>
+                                 <tr>
+                                    <th>Número de Varilla</th>
+                                    <th>Diámetro (pulgadas)</th>
+                                    <th>Diámetro (mm)</th>
+                                    <th>Área (mm<sup>2</sup>)</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr>
+                                    <td>No. 2</td>
+                                    <td>1/4"</td>
+                                    <td>6.4</td>
+                                    <td>32</td>
+                                 </tr>
+                                 <tr>
+                                    <td>No. 3</td>
+                                    <td>3/8"</td>
+                                    <td>9.5</td>
+                                    <td>71</td>
+                                 </tr>
+                                 <tr>
+                                    <td>No. 4</td>
+                                    <td>1/2"</td>
+                                    <td>12.7</td>
+                                    <td>129</td>
+                                 </tr>
+                                 <tr>
+                                    <td>No. 5</td>
+                                    <td>5/8"</td>
+                                    <td>15.9</td>
+                                    <td>199</td>
+                                 </tr>
+                                 <tr>
+                                    <td>No. 6</td>
+                                    <td>3/4"</td>
+                                    <td>19.1</td>
+                                    <td>284</td>
+                                 </tr>
+                                 <tr>
+                                    <td>No. 7</td>
+                                    <td>7/8"</td>
+                                    <td>22.2</td>
+                                    <td>387</td>
+                                 </tr>
+                                 <tr>
+                                    <td>No. 8</td>
+                                    <td>1"</td>
+                                    <td>25.4</td>
+                                    <td>510</td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+
+                     <hr>
+
+                     <h5 class="nota">**Seleccione el número de la varilla supuesto teniendo en cuenta los valores de
+                        la TABLA 1</h5>
+                     <hr><br>
+                     <button type="submit" id="btn_calcular1" class="btn btn-primary"
+                        onclick="calcularColumna()">Calcular</button>
+                     <button type="button" class="btn btn-success" onclick="limpiar(); borrar()">Limpiar</button>
+
+                     <h3 id="base" class="text-danger"></h3>
+                  </div>
+                  <div id="exceso" class="resultado text-center" style="display: none;"></div>
+
+                  <div class="resultado card-footer" id="asmin_mayor" style="display: none;">
+
+                     <div class="resultado text-center">
+                        <h3>NOTA: Elija como varilla supuesta aquella que tenga un menor porcentaje de exceso o
+                           desperdicio de acero, pero que cumpla con la separación mínima
+                     </div>
+                  </div>
+               </form>
+            </div>
+         </div>
+         <div class="">
+            <div class="text-center resultado" style="display: none;" id="tabla_resultado">
+               <div class="row">
+                  <div id="resultado" class="col-7"></div>
+                  <div class="col-5">
+                     <h2>Tener en cuenta la tabla de convenciones</h2>
+                     <table class="peque">
+                        <thead>
+                           <tr>
+                              <th>Variable</th>
+                              <th>Descripción</th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                           <tr>
+                              <td>Pmin</td>
+                              <td>Cuantía mínima</td>
+                           </tr>
+                           <tr>
+                              <td>Ac</td>
+                              <td>Área de la columna</td>
+                           </tr>
+
+                           <tr>
+                              <td>AsMin</td>
+                              <td>Acero mínimo que requiere</td>
+                           </tr>
+
+                           <tr>
+                              <td>As-suministrado</td>
+                              <td>Acero mínimo suministrado</td>
+                           </tr>
+                           <tr>
+                              <td>Exceso de As</td>
+                              <td>Exceso de acero</td>
+                           </tr>
+
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+
+            </div>
+            <div id="condiciones" class="resultado text-center"
+               style="display: none; padding-bottom:10px;">
+               <div id="cumpleNoVarilla"></div><br>
+               <div id="condicion_separacionF"> </div>
+            </div>
+         </div><br>
+
+
+      </div>
+      <br>
+      <div class="container-fluid" style="display: none;" id="diagrama_interaccion">
+
+         <div class="card">
+            <div class="card-header text-center">
+               <b> DIAGRAMA DE INTERACCIÓN </b>
+            </div>
+            <div class="card-body">
+               <div class="d-flex justify-content-center">
+                  <div id="datos_concreto" class="col-5">
+                     <h2>Datos para concreto</h2>
+                     <table class="peque">
+
+                        <tbody>
+                           <tr>
+                              <th>Número de Fibras</th>
+                              <td id="nfibras"></td>
+                              <td>und</td>
+                           </tr>
+                           <tr>
+                              <th>Longitud de fibra</th>
+                              <td id="lfibra"></td>
+                              <td>mm</td>
+                           </tr>
+                           <tr>
+                              <th>Módulo de elasticidad del concreto</th>
+                              <td id="es_concreto"></td>
+                              <td>MPa</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <br>
+                     <button class="btn btn-warning" id="boton_gra" disabled onclick="diagramaInteraccion()">Mostrar
+                        gráfico</button>
+                  </div>
+                  <div id="datos_acero" class="col-5">
+                     <h2>Datos para acero</h2>
+                     <table class="peque">
+
+                        <tbody>
+                           <tr>
+                              <th>Módulo de elasticidad del acero</th>
+                              <td id="es_acero"></td>
+                              <td>MPa</td>
+                           </tr>
+                           <tr>
+                              <th>Recubrimiento</th>
+                              <td id="recub"></td>
+                              <td>mm</td>
+                           </tr>
+                           <tr>
+                              <th>Diámetro Varilla Longitudinal</th>
+                              <td id="dvlong"></td>
+                              <td>mm</td>
+                           </tr>
+                           <tr>
+                              <th>Área Varilla Longitudinal</th>
+                              <td id="avlong"></td>
+                              <td>mm<sup>2</sup></td>
+                           </tr>
+                           <tr>
+                              <th>Diámetro Estribo</th>
+                              <td id="destribo"></td>
+                              <td>mm</td>
+                           </tr>
+
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+
+            </div>
+
+         </div>
+      </div>
+      <br>
+      <div class="container-fluid" style="display: none;" id="tabla_diagrama">
+         <div class="row">
+            <div class="col">
+               <div class="card">
+                  <div class="card-header text-center">
+                     <b> Tabla </b>
+                  </div>
+                  <div class="card-body" id="">
+                     <table class="peque text-center">
+                        <thead>
+                           <th>c</th>
+                           <th>Mn (KN-m)</th>
+                           <th>Pn (KN)</th>
+                           <th>&phi;Mn</th>
+                           <th>&phi;Pn</th>
+                        </thead>
+                        <tbody id="tablagrafico">
+
+                        </tbody>
+                     </table>
+
+                  </div>
+               </div>
+            </div>
+            <div class="col">
+               <div class="card">
+                  <div class="card-header text-center">
+                     <b> Gráfico </b>
+                  </div>
+                  <div class="card-body" id="grafico">
+                     <canvas id="myChart" width="800" height="400"
+                        style="display: block;box-sizing: border-box;height: 400px; width: 800px; "></canvas>
+
+                  </div>
+               </div>
+            </div>
+         </div>
+
+
+      </div>
+
+   </div>
+
+   <br>
+   <hr><br>
+   <div class="container-fluid" id="campos_cortante" style="display: none;">
+      <div class="text-center">
+         <h3 class="flexion">Diseño a Cortante</h3>
+         <div class="card">
+            <form>
+               <!-- <div class="card-header text-center">
+                     
+                  </div> -->
+               <div class="card-body text-center">
+                  <h3 class="card-title"><b> Para el cálculo a cortante de una columna, se toman los datos ingresados
+                        con
+                        anterioridad referentes a
+                        las dimensiones de la
+                        columna (Base y altura) y datos de los materiales (f'c y Fy)</b></h3>
+                  <br>
+                  <div class="d-flex justify-content-center">
+                     <!-- <div class="col-6">
+                        <div class="row d-flex justify-content-center">
+                           <h4>Debe ingresar el valor de cortante última:</h4>
+
+                           <div class="col-4">
+                              <h4 class="mt-3">Cortante Vu (kN)</h4>
+                           </div>
+                           <div class="col-3">
+                              <input type="number" class="form-control" id="Vu" name="Vu" placeholder="" required
+                                 autofocus
+                                 onkeydown="validarTeclaMenos(event,'Vu'); validarValorMinimo('Vu',0,'inputVu');"
+                                 oninput="validarValorMinimo('Vu',0,'inputVu'); validarValorMinimo('Vu',0,'inputVu');"
+                                 onblur="validarValorPositivo('Vu','inputVu'); validarValorMinimo('Vu',0,'inputVu');" />
+                           </div>
+
+                           <div id="inputVu" class="text-center" style="color: red;"></div>
+                        </div>
+                     </div> -->
+
+
+                     <div class="col-5">
+                        <h4>Se seleccionan los siguientes datos de Flexo Axial</h4>
+
+                        <table class="peque">
+                           <tr>
+                              <th>Recubrimiento</th>
+                              <td id="rec_cortante">40</td>
+                              <td>mm</td>
+                           </tr>
+                           <tr>
+                              <th>No. Varilla Longitudinal</th>
+                              <td id="noVar_cortante">6</td>
+                              <td>&nbsp;</td>
+                           </tr>
+                           <tr>
+                              <th>Área Varilla Longitudinal</th>
+                              <td id="areaVar_cortante">284</td>
+                              <td>mm<sup>2</sup></td>
+                           </tr>
+                           <tr>
+                              <th>Diámetro Varilla Longitudinal</th>
+                              <td id="diametroVar_cortante">19.1</td>
+                              <td>mm</td>
+                           </tr>
+                           <tr>
+                              <th>Cantidad Varillas Longitudinales</th>
+                              <td id="cantVar_cortante">10</td>
+                              <td>und</td>
+                           </tr>
+                           <tr>
+                              <th>No. Varilla Estribo</th>
+                              <td id="noVarEstribo">3</td>
+                              <td>&nbsp;</td>
+                           </tr>
+                           <tr>
+                              <th>Diámetro Varilla Estribo</th>
+                              <td id="diamEstribo">9.5</td>
+                              <td>mm</td>
+                           </tr>
+                           <tr>
+                              <th>Área Varilla Estribo</th>
+                              <td id="areaEstribo">71</td>
+                              <td>mm<sup>2</sup></td>
+                           </tr>
+
+                        </table>
+
+                     </div>
+                  </div>
+                  <hr>
+
+                  <br><br>
+                  <button type="button" class="btn btn-warning" onclick="calcular_cortante_columna()">Calcular</button>
+                  <!-- <button type="button" class="btn btn-success" onclick="limpiar_cortante()">Limpiar</button> -->
+
+                  <h3 id="datos_cortante" class="text-danger"></h3>
+               </div>
+            </form>
+         </div>
+         <!-- <div id="chequeo_separacion" class="resultado" style="display: none;">
+            <br>
+            <h3 class="card-title">NOTA: Tenga en cuenta que para el diseño en vigas se selecciona el diámetro
+               de la varilla menor entre la parte superior e inferior de la viga</h3>
+            <div class="d-flex justify-content-center" id="menor_varilla">
+               <div class="col-3">
+                  <h4>Datos de la varilla longitudinal mínima a flexión:</h4>
+                  <table class="peque">
+                     <tr>
+                        <th>No. Varilla</th>
+                        <td id="no_menor_varilla"></td>
+                     </tr>
+                     <tr>
+                        <th>Diámetro</th>
+                        <td id="diametro_menor_varilla"></td>
+                     </tr>
+                  </table>
+               </div>
+            </div>
+            <hr><br>
+         </div> -->
+
+      </div><br>
+      <hr>
+      <div class="card" id="formulas_cortante" style="display: none;">
+         <div id="separacion_varillas">
+            <br>
+            <div class="row">
+               <div class="col-8">
+                  <ul class="formulas">
+                     <li class="li_formulas">Separación entre varillas</li><br>
+                     <div class="text-center"><br>
+                        <p>\( S = \min\left(\dfrac{\min(h,b)}{4}; 6d_{\text{blong}}; 150\text{mm}\right) = \)
+                           <span id="sep_varillas">70mm</span>
+                        </p>
+                     </div>
+                  </ul>
+               </div>
+               <div class="col">
+                  <img src="./img/Imagen4_sep_cols.png" alt="" width="200">
+               </div>
+            </div>
+
+            <br>
+            <h3 class="text-center"><b>Debe ser mayor a 50mm</b></h3><br>
+            <div id="condicion_separacion" class="resultado text-center"></div><br>
+         </div><br><br><br>
+         <div id="seguir_proceso" style="display: none;">
+            <div class="row" id="area_confinada">
+               <br>
+               <div class="col-7">
+                  <ul class="formulas">
+                     <li class="li_formulas">Área confinada</li>
+                     <div class="text-center"><br>
+                        <p>\( Base = \ b - 2R - 2e \) =
+                           <span id="baseCort">70mm</span>
+                        </p><br>
+
+                        <p>\( Altura = \ h - 2R - 2e \) =
+                           <span id="altCort">70mm</span>
+                        </p><br>
+                        <p>\( Ach = \ Base * Altura \) =
+                           <span id="a_conf">70mm</span>
+                        </p>
+                     </div>
+                  </ul>
+               </div>
+               <div class="col">
+                  <img src="./img/Imagen_area_conf_cols.png" width="500" height="500">
+               </div>
+            </div>
+
+            <br><br><br>
+            <div id="refuerzo_minimo">
+               <br>
+               <ul class="formulas">
+                  <li class="li_formulas">Refuerzo mínimo vertical</li>
+                  <div class="text-center"><br>
+                     <div class="row">
+                        <div class="col-7">
+                           <p>\(Ash_a = \dfrac{{0.3 \cdot (S \cdot bc \cdot F`c)}}{{Fy}} \cdot \left(\dfrac{{Ag}}{{Ach}}
+                              -
+                              1\right) = \) <span id="ash1Cort">70mm</span></p><br>
+                           <p>\(Ash_b = \dfrac{{0.09 \cdot (S \cdot bc \cdot F`c)}}{{Fy}} = \) <span
+                                 id="ash2Cort">70mm</span>
+                           </p><br>
+                           <p>\( Ash1 = \max(Ash_a; Ash_b) = \)<br>\(\ máx \)
+                              <span id="ref_min">70mm</span>
+                           </p><br>
+                           <p>\( No. Estribos = \)
+                              <span id="noEstribs">70mm</span>
+                           </p>
+
+                        </div>
+                        <div class="col-3" id="refMinVert1"></div>
+                     </div>
+
+                     <br>
+                     <div class="resultado">
+                        <b>
+                           <h3 id="cumple_estribos"></h3>
+                        </b><b>
+                           <h3 id="NOcumple_estribos"></h3>
+                        </b>
+                     </div>
+
+
+                  </div>
+               </ul>
+            </div><br><br><br>
+            <hr>
+            <div id="reducir_separacion" style="display: none;">
+               <h2 class="text-center" style="font-size: 30px; font-weight: bolder;">REDUCCIÓN DE SEPARACIÓN</h2><br>
+               <div id="refuerzo_minimo">
+                  <br>
+                  <ul class="formulas">
+                     <li class="li_formulas">Refuerzo mínimo vertical</li>
+                     <div class="text-center"><br>
+                        <div class="row">
+                           <div class="col-7">
+
+                              <p>\( Separación = \)
+                                 <span id="sep2"></span>mm
+                              </p><br><br>
+                              <p>\(Ash_a = \dfrac{{0.3 \cdot (S \cdot bc \cdot F`c)}}{{Fy}} \cdot
+                                 \left(\dfrac{{Ag}}{{Ach}} -
+                                 1\right) = \) <span id="ash1CortR">70mm</span></p><br>
+                              <p>\(Ash_b = \dfrac{{0.09 \cdot (S \cdot bc \cdot F`c)}}{{Fy}} = \) <span
+                                    id="ash2CortR">70mm</span></p><br>
+                              <p>\( Ash1 = \max(Ash_a; Ash_b) = \)<br>\(\ máx \)
+                                 <span id="ashReduc">70mm</span>
+                              </p><br>
+                              <p>\( No. Estribos = \)
+                                 <span id="NoEstribsRed">70mm</span>
+                              </p>
+
+                           </div>
+                           <div class="col-3" id="refMinVert2"></div>
+
+
+                        </div>
+                     </div>
+                     <br>
+                     <div class="resultado text-center">
+                        <b>
+                           <h3 id="cumple_estribos2"></h3>
+                        </b>
+                        <b>
+                           <h3 id="NOcumple_estribos2"></h3>
+                        </b>
+                     </div>
+                  </ul>
+               </div><br><br><br>
+            </div>
+
+
+            <div id="refuerzo_minimo_horizontal">
+               <br>
+               <ul class="formulas">
+                  <li class="li_formulas">Refuerzo mínimo horizontal</li>
+                  <div class="text-center"><br>
+                     <div class="row">
+                        <div class="col-7">
+
+
+                           <p>\(Ash_a = \dfrac{{0.3 \cdot (S \cdot bc \cdot F`c)}}{{Fy}} \cdot \left(\dfrac{{Ag}}{{Ach}}
+                              -
+                              1\right) = \) <span id="ash1CortHor">70mm</span></p><br>
+                           <p>\(Ash_b = \dfrac{{0.09 \cdot (S \cdot bc \cdot F`c)}}{{Fy}} = \) <span
+                                 id="ash2CortHor">70mm</span>
+                           </p><br>
+                           <p>\( Ash2 = \max(Ash_a; Ash_b) = \)<br>\(\ máx \)
+                              <span id="ref_minHor">70mm</span>
+                           </p><br>
+                           <p>\( No. Estribos = \)
+                              <span id="noEstribsHor">70mm</span>
+                           </p>
+                        </div>
+                        <div class="col-3" id="refMinHor1"></div>
+
+                     </div>
+                     <br>
+                     <div class="resultado">
+                        <b>
+                           <h3 id="cumple_estribosHor"></h3>
+                        </b><b>
+                           <h3 id="NOcumple_estribosHor"></h3>
+                        </b>
+                     </div>
+
+
+                  </div>
+               </ul>
+            </div><br><br><br>
+            <hr>
+            <div id="reducir_separacionHor" style="display: none;">
+               <h2 class="text-center" style="font-size: 30px; font-weight: bolder;">REDUCCIÓN DE SEPARACIÓN</h2><br>
+               <div id="refuerzo_minimo_horizontal">
+                  <br>
+                  <ul class="formulas">
+                     <li class="li_formulas">Refuerzo mínimo horizontal</li>
+                     <div class="text-center"><br>
+                        <div class="row">
+                           <div class="col-7">
+                              <p>\( Separación = \)
+                                 <span id="sep2Hor"></span>mm
+                              </p><br><br>
+                              <p>\(Ash_a = \dfrac{{0.3 \cdot (S \cdot bc \cdot F`c)}}{{Fy}} \cdot
+                                 \left(\dfrac{{Ag}}{{Ach}} -
+                                 1\right) = \) <span id="ash1CortRHor">70mm</span></p><br>
+                              <p>\(Ash_b = \dfrac{{0.09 \cdot (S \cdot bc \cdot F`c)}}{{Fy}} = \) <span
+                                    id="ash2CortRHor">70mm</span></p><br>
+                              <p>\( Ash2 = \max(Ash1; Ash2) = \)<br>\(\ máx \)
+                                 <span id="ashReducHor">70mm</span>
+                              </p><br>
+                              <p>\( No. Estribos = \)
+                                 <span id="NoEstribsRedHor">70mm</span>
+                              </p>
+                           </div>
+                           <div class="col-3" id="refMinHor2"></div>
+
+                        </div>
+                     </div>
+                     <br>
+                     <div class="resultado text-center">
+                        <b>
+                           <h3 id="cumple_estribos2Hor"></h3>
+                        </b>
+                        <b>
+                           <h3 id="NOcumple_estribos2Hor"></h3>
+                        </b>
+                     </div>
+                  </ul>
+               </div><br><br><br>
+            </div>
+
+            <br><br>
+            <div class="d-flex justify-content-center" id="refFinal">
+
+            </div>
+            <br>
+            <hr><br>
+            <div class="card">
+               <div class="card-header text-center">
+                  <h3 class="card-title"><b> Separación de estribos</b></h3>
+               </div>
+               <div class="card-body text-center">
+                  <div class="table-responsive">
+                     <table class="table table-borderless">
+                        <tbody>
+                           <tr>
+                              <td style="width: 300px; text-align: center;">
+                                 <h4 class="">Ingrese la luz libre de la columna (mm)</h4>
+                              </td>
+                              <tr class="d-flex justify-content-center">
+                              <td style="width: 200px;">
+                                 <input style="width: 100%; min-width: 100px;" type="number" class="form-control"
+                                    min="1" onkeydown="validarTeclaMenos(event,'luzLibreLong')"
+                                    onblur="validarValorPositivo('luzLibreLong','TXTluzLibreLong');" id="luzLibreLong"
+                                    name="luzLibreLong" placeholder="" onended="" required autofocus />
+                              </td>
+                           </tr>
+                              <!-- <td style="width: 100px;"></td> -->
+
+                              <!-- <td rowspan="3" style="vertical-align: top;">
+                                 <img src="./img/luzLibre.png" alt="imagen1" style="min-width: 200px;">
+                              </td> -->
+                              <!-- <td style="width: 300px; text-align: right;">
+                                 <h4 class="mt-1">Ingrese la altura de la columna (mm)</h4>
+                              </td> -->
+                              <!-- <td style="width: 200px;">
+                                 <input style="width: 100%; min-width: 100px;" type="number" class="form-control mt-1"
+                                    id="alturaCol" name="alturaCol" min="1" required autofocus
+                                    onkeydown="validarTeclaMenos(event,'alturaCol')"
+                                    onblur="validarValorPositivo('alturaCol','TXTalturaCol'); validarValorMinimo('alturaCol',200,'TXTalturaCol');" />
+                                 <div id="TXTalturaCol" class="text-center " style="color: red;"></div>
+                              </td> -->
+
+                           </tr>
+                           <tr>
+                              <td colspan="">
+
+                              </td>
+                           </tr>
+                           <tr>
+                              <td colspan="">
+
+                           </tr>
+                        </tbody>
+                     </table>
+                     <div id="TXTluzLibreLong" class="text-center " style="color: red;"></div>
+                     <div id="TXTluzLibre" class="text-center " style="color: red;"></div>
+                     <br>
+                  </div>
+                  <br>
+                  <button type="submit" id="" class="btn btn-primary" onclick="calcularLongEst()">Calcular</button>
+               </div>
+               <div id="zonConf" class="card-body" style="display: none;">
+                  <div id="h2mm" class="text-center " style="color: rgb(0, 6, 61);">Por lo tanto: H/2 (mm) = </div>
+                  <br>
+                  <div class="row">
+                     <div class="col-5">
+                        <img src="./img/zona_confinamiento.png" alt="">
+                     </div>
+                     <div class="col">
+                        <div class="table-responsive">
+                           <table class="table table-bordered">
+                              <thead>
+                                 <th>Zona de confinamiento</th>
+                              </thead>
+                              <tbody>
+                                 <tr>
+                                    <td>La longitud de confinamiento (<b>Lo</b>) en cada caso, no será menor que: <br>
+                                       <div><b>Lo</b> >= La menor dimensión de la columna: <span
+                                             id="minDimCol">300</span>mm </div>
+                                       <div><b>Lo</b> >= 1/6 de la luz libre de la columna: <span
+                                             id="sextoCol">330</span>mm </div>
+                                       <div><b>Lo</b> >= 450mm </div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>La separación (<b>So</b>) en la zona de confinamiento, no será mayor que: <br>
+                                       <div><b>So</b>
+                                          <= 1/4 menor dimensión de la columna: <span id="minDimColSep">30</span>mm
+                                       </div>
+                                       <div><b>So</b>
+                                          <= 100mm </div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>La separación mínima en la zona de confinamiento, no será menor que: <br>
+                                       <div><b>So</b> >= Tamaño máximo del agregado grueso: 25mm </div>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                           <br>
+                           <table class="table table-bordered">
+                              <thead>
+                                 <th>Fuera de la Zona de confinamiento</th>
+                              </thead>
+                              <tbody>
+                                 <tr>
+                                    <td>En la longitud fuera de la zona de confinamiento la separación (<b>S</b>) no
+                                       será mayor que:<br>
+                                       <div><b>S</b>
+                                          <= 150mm </div>
+                                             <div><b>S</b>
+                                                <= 8 veces el diametro de la varilla longitudinal de menor diametro:
+                                                   <span id="ochoDiametro">330</span>mm
+                                             </div>
+                                             <div><b>Lo</b> >= 450mm </div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>
+                                       En la zona de empalme la separación de las ligaduras será igual a la de la zona
+                                       de confinamiento.
+                                    </td>
+                                 </tr>
+                              </tbody>
+
+                           </table>
+                        </div>
+                     </div>
+                  </div>
+
+
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <br>
+
+   </div>
+
+
+   <!-- end contact  -->
+   <!-- footer -->
+   <footer>
+      <div class="footer">
+         <div class="container1">
+            <div class="row">
+               <div class="col-md-10 offset-md-1">
+                  <ul class="social_icon text_align_center">
+                     <li> <a target="_blank" href="https://www.facebook.com/UniversidadMariana.Pasto"><i
+                              class="fa fa-facebook-f"></i></a></li>
+                     <li> <a target="_blank" href="https://twitter.com/UMarianaPasto"><i class="fa fa-twitter"></i></a>
+                     </li>
+                     <li> <a target="_blank" href="https://www.youtube.com/user/UniversidadMariana/"><i
+                              class="fa fa-youtube" aria-hidden="true"></i></a></li>
+                     <li> <a target="_blank" href="https://www.instagram.com/universidadmariana/"><i
+                              class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                     <li> <a target="_blank" href="https://www.tiktok.com/@universidadmariana"><svg
+                              xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                              class="bi bi-tiktok" viewBox="0 0 16 16" aria-hidden="true">
+                              <path
+                                 d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3V0Z" />
+                           </svg></a></li>
+                  </ul>
+               </div>
+               <div class="colf_4">
+                  <div class="reader text-center">
+                     <ul class="xple_menu">
+
+                        <a target="_blank" id="universidad" href="https://www.umariana.edu.co/index.html"><img
+                              src="./img/logo.jfif" alt="#" width="400px" /><span>Página principal Universidad
+                              Mariana</span></a>
+                     </ul>
+
+                  </div>
+               </div>
+               <div class="col-md-2 col-sm-6">
+                  <div class="reader">
+                     <h3>Explorar</h3>
+                     <ul class="xple_menu">
+                        <li><a href="index.html">Inicio</a>
+                        </li>
+                        <li><a href="Introduccion.html">Introducción</a>
+                        </li>
+                        <li><a href="Normas.html">Normas</a>
+                        </li>
+                        <li>
+                           <div class="dropdown">
+                              <a href="#" type="button" class="dropdown-toggle" data-bs-toggle="dropdown"
+                                 aria-expanded="false">
+                                 Cálculos
+                              </a>
+                              <ul class="dropdown-menu">
+                                 <li><a class="dropdown-item" href="calculos.html"><button type="button"
+                                          class="btn btn-light">Diseño de
+                                          Vigas</button></a>
+                                 </li>
+                                 <li><a class="dropdown-item" href="calculosColumnas.html"><button type="button"
+                                          class="btn btn-light">Diseño de
+                                          Columnas</button></a>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
+                        <li>
+                           <div class="dropdown">
+                              <a href="#" type="button" class="dropdown-toggle" data-bs-toggle="dropdown"
+                                 aria-expanded="false">
+                                 Información
+                              </a>
+                              <ul class="dropdown-menu">
+                                 <li><a class="dropdown-item" href="manual.html"><button type="button"
+                                          class="btn btn-light">Manual de Usuario</button></a>
+                                 </li>
+                                 <li><a class="dropdown-item" href="autores.html"><button type="button"
+                                          class="btn btn-light">Autores</button></a>
+                                 </li>
+                              </ul>
+                           </div>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="col-md-3 col-sm-6">
+                  <div class="reader">
+                     <h3 style="padding-left: 55px;">Anexos</h3>
+                     <ul class="re_post">
+                        <li><img src="./img/re_img1.jpg" alt="#" /></li>
+                        <li><img src="./img/re_img2.jpg" alt="#" /></li>
+                        <li><img src="./img/re_img3.jpg" alt="#" /></li>
+                        <li><img src="./img/re_img4.jpg" alt="#" /></li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="col-md-3 col-sm-6">
+                  <div class="reader">
+                     <h3 class="text-center">Contacto</h3>
+                     <ul class="" id="em">
+                        <li> <i class="fa fa-map-marker" aria-hidden="true" style="font-size: 30px;"></i>&nbsp;&nbsp;
+                           &nbsp; Calle 18 No. 34-104 Pasto (N)<br>&nbsp; Bloque María Inmaculada - Oficina 204</li>
+                        <br>
+                        <li><i class="fa fa-phone" aria-hidden="true" style="font-size: 30px;"></i>&nbsp;&nbsp;&nbsp;
+                           &nbsp; 52 +7244460 Ext 174</a></li>
+                        <li> <a class="correo" href="#"><i class="fa fa-envelope" aria-hidden="true"
+                                 style="font-size: 30px;"></i><span class="it_correo">
+                                 ingenieriacivil@umariana.edu.co</span></a>
+                        </li>
+                        <li> <a class="correo" href="#"><i class="fa fa-envelope" aria-hidden="true"
+                                 style="font-size: 30px;"></i><span class="it_correo">
+                                 avgomeza@umariana.edu.co</span></a>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="copyright text_align_center">
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-10 offset-md-1">
+                     <p>Copyright 2023 All Right Reserved</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </footer>
+   <!-- end footer -->
+   <!-- Javascript files-->
+   <script src="./assets/dist/js/jquery.min.js"></script>
+   <script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
+   <script src="./assets/dist/js/custom.js"></script>
+   <script src="./assets/dist/js/jquery-3.0.0.min.js"></script>
+   <!-- <script src="./assets/dist/js/calculos.js"></script> -->
+   <!-- <script src="./assets/dist/js/resistencia_ultima.js"></script> -->
+   <!-- <script src="./assets/dist/js/calculo_cortante.js"></script> -->
+   <!-- <script src="./assets/dist/js/columnas.js"></script> -->
+   <script src="./js/columnas.js"></script>
+   <script src="./js/cortanteColumnas.js"></script>
+   <script src="./js/diagrama.js"></script>
+
+
+</body>
+
+</html>
