@@ -38,6 +38,12 @@
    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.1/purify.min.js"></script>
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+   <script src="./js/jspdf.umd.min.js"></script>
 
 </head>
 <!-- body -->
@@ -75,6 +81,9 @@
             <li><a class="dropdown-item" href="manual.html"><button type="button" class="btn btn-light">Manual de
                      Usuario</button></a>
             </li>
+            
+        <li><a class="dropdown-item" href="tutorial.html"><button type="button" class="btn btn-light">Video Tutorial</button></a>
+        </li>
             <li><a class="dropdown-item" href="autores.html"><button type="button"
                      class="btn btn-light">Autores</button></a>
             </li>
@@ -192,6 +201,8 @@
                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                         <li><a class="dropdown-item" href="manual.html"><button type="button" class="btn">Manual
                                  de Usuario</button></a>
+                        </li>
+                        <li><a class="dropdown-item" href="tutorial.html"><button type="button" class="btn">Video Tutorial</button></a>
                         </li>
                         <li><a class="dropdown-item" href="autores.html"><button type="button"
                                  class="btn">Autores</button></a>
@@ -351,8 +362,8 @@
                   </div>
                   <div class="card-body text-center">
                      <div class="row d-flex justify-content-center">
-                        <div class="columna-2">
-                           <h4 for="fc">Resistencia a la compresion del concreto (f'c) MPa</h4>
+                        <div class="col-2">
+                           <h4 for="fc">Resistencia a la compresion del concreto(f'c) MPa</h4>
                         </div>
                         <div class="columna-1">
                            <select class="mpa" name="fc" id="fc1" onchange="actualizar_fc(this); limpiar(); ">
@@ -466,7 +477,7 @@
                               <div class="col-3 mb-3">
                                  <select class="entrada" name="numeroVarillaEstribo" id="numeroVarillaEstribo"
                                     onchange="actualizar_varilla_estribo(this); limpiar()">
-                                    <option value="2">No. 2</option>
+                                    <!-- <option value="2">No. 2</option> -->
                                     <option value="3">No. 3</option>
                                     <option value="4">No. 4</option>
                                     <option value="5">No. 5</option>
@@ -482,9 +493,9 @@
                               </div>
                               <div class="col-3-1">
                                  <input type="text" class="form-control" id="diametro_estribo" name="diametro_estribo"
-                                    value="6.4" placeholder="" required disabled />
+                                    value="9.5" placeholder="" required disabled />
                                  <input type="text" class="form-control" id="area_estribo" name="area_estribo"
-                                    value="32" placeholder="" required disabled hidden />
+                                    value="71" placeholder="" required disabled hidden />
                               </div>
                            </div>
                         </div>
@@ -511,7 +522,7 @@
                      <div class="row d-flex justify-content-center">
                         <div class="col-6">
 
-                           <table class="peque">
+                           <table class="peque" id="tabla_varillas">
                               <thead>
                                  <tr>
                                     <th>Número de Varilla</th>
@@ -577,6 +588,7 @@
                         onclick="calcularColumna()">Calcular</button>
                      <button type="button" class="btn btn-success" onclick="limpiar(); borrar()">Limpiar</button>
 
+
                      <h3 id="base" class="text-danger"></h3>
                   </div>
                   <div id="exceso" class="resultado text-center" style="display: none;"></div>
@@ -634,8 +646,7 @@
                </div>
 
             </div>
-            <div id="condiciones" class="resultado text-center"
-               style="display: none; padding-bottom:10px;">
+            <div id="condiciones" class="resultado text-center" style="display: none; padding-bottom:10px;">
                <div id="cumpleNoVarilla"></div><br>
                <div id="condicion_separacionF"> </div>
             </div>
@@ -744,7 +755,7 @@
                </div>
             </div>
             <div class="col">
-               <div class="card">
+               <div class="card table-responsive">
                   <div class="card-header text-center">
                      <b> Gráfico </b>
                   </div>
@@ -752,6 +763,21 @@
                      <canvas id="myChart" width="800" height="400"
                         style="display: block;box-sizing: border-box;height: 400px; width: 800px; "></canvas>
 
+                     <hr>
+                     <div class="row">
+                        <div class="col">
+                           <h6 class="card-title text-center"><b>Resistencia a compresión pura:</b></h6>
+                           <h5 class="card-title text-center"><i><b>ϕPn</b> = 0.85 x F'<sub>c</sub> x (A<sub>g</sub> - A<sub>s</sub>) + A<sub>s</sub> x F<sub>y</sub></i><br><i class="small">(NSR-10. C.19-1)</i></h5>
+                           <br>
+                           <h6 class="card-title text-center"><b>Resistencia a tensión pura:</b></h6>
+                           <h5 class="card-title text-center"><i><b>ϕPt</b> = A<sub>s</sub> x F<sub>y</sub></i><br><i class="small">(NSR-10. Sección C.10.3.7)</i></h5>
+                        </div>
+                        <div class="col">
+                           <h5>Donde: <br><b>F'<sub>c</sub></b> = Resistencia a la compresión del
+                              concreto<br><b>A<sub>g</sub></b> = Área total de la sección<br><b>A<sub>s</sub></b> = Área
+                              total refuerzo longitudinal<br><b>F<sub>y</sub></b> = Esfuerzo de fluencia del acero</h5>
+                        </div>
+                     </div>
                   </div>
                </div>
             </div>
@@ -769,9 +795,6 @@
          <h3 class="flexion">Diseño a Cortante</h3>
          <div class="card">
             <form>
-               <!-- <div class="card-header text-center">
-                     
-                  </div> -->
                <div class="card-body text-center">
                   <h3 class="card-title"><b> Para el cálculo a cortante de una columna, se toman los datos ingresados
                         con
@@ -780,7 +803,7 @@
                         columna (Base y altura) y datos de los materiales (f'c y Fy)</b></h3>
                   <br>
                   <div class="d-flex justify-content-center">
-                     <!-- <div class="col-6">
+                     <div class="col-6">
                         <div class="row d-flex justify-content-center">
                            <h4>Debe ingresar el valor de cortante última:</h4>
 
@@ -788,16 +811,16 @@
                               <h4 class="mt-3">Cortante Vu (kN)</h4>
                            </div>
                            <div class="col-3">
-                              <input type="number" class="form-control" id="Vu" name="Vu" placeholder="" required
-                                 autofocus
-                                 onkeydown="validarTeclaMenos(event,'Vu'); validarValorMinimo('Vu',0,'inputVu');"
-                                 oninput="validarValorMinimo('Vu',0,'inputVu'); validarValorMinimo('Vu',0,'inputVu');"
-                                 onblur="validarValorPositivo('Vu','inputVu'); validarValorMinimo('Vu',0,'inputVu');" />
+                              <input type="number" class="form-control" id="Vu_col" name="Vu_col" placeholder=""
+                                 required autofocus
+                                 onkeydown="validarTeclaMenos(event,'Vu_col'); validarValorMinimo('Vu_col',0,'inputVu_col');"
+                                 oninput="validarValorMinimo('Vu_col',0,'inputVu_col'); validarValorMinimo('Vu_col',0,'inputVu_col');"
+                                 onblur="validarValorPositivo('Vu_col','inputVu_col'); validarValorMinimo('Vu_col',0,'inputVu_col');" />
                            </div>
 
-                           <div id="inputVu" class="text-center" style="color: red;"></div>
+                           <div id="inputVu_col" class="text-center" style="color: red;"></div>
                         </div>
-                     </div> -->
+                     </div>
 
 
                      <div class="col-5">
@@ -894,6 +917,7 @@
                         <p>\( S = \min\left(\dfrac{\min(h,b)}{4}; 6d_{\text{blong}}; 150\text{mm}\right) = \)
                            <span id="sep_varillas">70mm</span>
                         </p>
+                        <i class="">(NSR-10. Sección C.21.6.4.3)</i>
                      </div>
                   </ul>
                </div>
@@ -941,10 +965,12 @@
                         <div class="col-7">
                            <p>\(Ash_a = \dfrac{{0.3 \cdot (S \cdot bc \cdot F`c)}}{{Fy}} \cdot \left(\dfrac{{Ag}}{{Ach}}
                               -
-                              1\right) = \) <span id="ash1Cort">70mm</span></p><br>
+                              1\right) = \) <span id="ash1Cort">70mm</span></p>
+                              <i class="">(NSR-10. C.21-7)</i>
+                              <br><br>
                            <p>\(Ash_b = \dfrac{{0.09 \cdot (S \cdot bc \cdot F`c)}}{{Fy}} = \) <span
                                  id="ash2Cort">70mm</span>
-                           </p><br>
+                           </p><i class="">(NSR-10. C.21-8)</i><br><br>
                            <p>\( Ash1 = \max(Ash_a; Ash_b) = \)<br>\(\ máx \)
                               <span id="ref_min">70mm</span>
                            </p><br>
@@ -985,9 +1011,9 @@
                               </p><br><br>
                               <p>\(Ash_a = \dfrac{{0.3 \cdot (S \cdot bc \cdot F`c)}}{{Fy}} \cdot
                                  \left(\dfrac{{Ag}}{{Ach}} -
-                                 1\right) = \) <span id="ash1CortR">70mm</span></p><br>
+                                 1\right) = \) <span id="ash1CortR">70mm</span></p><i class="">(NSR-10. C.21-7)</i><br><br>
                               <p>\(Ash_b = \dfrac{{0.09 \cdot (S \cdot bc \cdot F`c)}}{{Fy}} = \) <span
-                                    id="ash2CortR">70mm</span></p><br>
+                                    id="ash2CortR">70mm</span></p><i class="">(NSR-10. C.21-8)</i><br><br>
                               <p>\( Ash1 = \max(Ash_a; Ash_b) = \)<br>\(\ máx \)
                                  <span id="ashReduc">70mm</span>
                               </p><br>
@@ -1026,10 +1052,10 @@
 
                            <p>\(Ash_a = \dfrac{{0.3 \cdot (S \cdot bc \cdot F`c)}}{{Fy}} \cdot \left(\dfrac{{Ag}}{{Ach}}
                               -
-                              1\right) = \) <span id="ash1CortHor">70mm</span></p><br>
+                              1\right) = \) <span id="ash1CortHor">70mm</span></p><i class="">(NSR-10. C.21-7)</i><br><br>
                            <p>\(Ash_b = \dfrac{{0.09 \cdot (S \cdot bc \cdot F`c)}}{{Fy}} = \) <span
                                  id="ash2CortHor">70mm</span>
-                           </p><br>
+                           </p><i class="">(NSR-10. C.21-8)</i><br><br>
                            <p>\( Ash2 = \max(Ash_a; Ash_b) = \)<br>\(\ máx \)
                               <span id="ref_minHor">70mm</span>
                            </p><br>
@@ -1068,9 +1094,9 @@
                               </p><br><br>
                               <p>\(Ash_a = \dfrac{{0.3 \cdot (S \cdot bc \cdot F`c)}}{{Fy}} \cdot
                                  \left(\dfrac{{Ag}}{{Ach}} -
-                                 1\right) = \) <span id="ash1CortRHor">70mm</span></p><br>
+                                 1\right) = \) <span id="ash1CortRHor">70mm</span></p><i class="">(NSR-10. C.21-7)</i><br><br>
                               <p>\(Ash_b = \dfrac{{0.09 \cdot (S \cdot bc \cdot F`c)}}{{Fy}} = \) <span
-                                    id="ash2CortRHor">70mm</span></p><br>
+                                    id="ash2CortRHor">70mm</span></p><i class="">(NSR-10. C.21-8)</i><br><br>
                               <p>\( Ash2 = \max(Ash1; Ash2) = \)<br>\(\ máx \)
                                  <span id="ashReducHor">70mm</span>
                               </p><br>
@@ -1093,11 +1119,52 @@
                      </div>
                   </ul>
                </div><br><br><br>
+
             </div>
 
             <br><br>
-            <div class="d-flex justify-content-center" id="refFinal">
+            <div class="d-flex justify-content-center" id="refFinal"></div>
+            <br>
+            <br>
 
+            <h2 class="text-center" style="font-size: 30px; font-weight: bolder;">Chequeo de Resistencia</h2><br>
+            <div class="text-center">
+               <br>
+               <p style="font-size: 20px;">\(\varphi V_n = (V_c + V_s) \)</p>
+               <i class="">(NSR-10. C.11-2)</i>
+               <br><br>
+               <p>Donde:
+                  <i>Vc</i>=cortante del concreto.
+                  <i>Vs</i>=cortante del acero
+               </p>
+               <br>
+               <p style="padding: 0% 5%;">Como la resistencia a cortante del concreto es mínima o casi nula, se
+                  considera igual a cero, y toda la responsabilidad del cortante es del
+                  acero, así que:</p>
+               <br>
+               <p style="font-size: 20px;"> \(\varphi V_n = V_s = \dfrac{{\varphi \cdot 𝐴_{{\text{v sum}}} \cdot 𝐹_y
+                  \cdot
+                  𝑑}}{{s}}\) = <span id="cortante_fin"></span></p>
+                  <i class="">(NSR-10. C.11-15)</i>
+
+            </div><br>
+            <p>Tenga en cuenta que \(\varphi\) = 0.75 por cortante</p>
+            <h3 class="text-center"><b>ϕVn > Vu</b> <i class="small">(NSR-10. C.11-1)</i></h3><br>
+            <div class="resultado text-center">
+               <div id="condicion_resistencia"></div>
+               <br>
+               <span id="resSep"></span>
+               <br>
+               <span id="cambioValores"></span>
+
+            </div><br>
+
+            <div class="resultado text-center" style="display: none;" id="tabla_resultado_cortante_cols"><br>
+               <div class="d-flex justify-content-center">
+                  <div class="col-7">
+                     <div id="resultado_cortante_cols" class=""></div><br>
+                  </div>
+               </div>
             </div>
             <br>
             <hr><br>
@@ -1113,7 +1180,7 @@
                               <td style="width: 300px; text-align: center;">
                                  <h4 class="">Ingrese la luz libre de la columna (mm)</h4>
                               </td>
-                              <tr class="d-flex justify-content-center">
+                           <tr class="d-flex justify-content-center">
                               <td style="width: 200px;">
                                  <input style="width: 100%; min-width: 100px;" type="number" class="form-control"
                                     min="1" onkeydown="validarTeclaMenos(event,'luzLibreLong')"
@@ -1121,21 +1188,7 @@
                                     name="luzLibreLong" placeholder="" onended="" required autofocus />
                               </td>
                            </tr>
-                              <!-- <td style="width: 100px;"></td> -->
 
-                              <!-- <td rowspan="3" style="vertical-align: top;">
-                                 <img src="./img/luzLibre.png" alt="imagen1" style="min-width: 200px;">
-                              </td> -->
-                              <!-- <td style="width: 300px; text-align: right;">
-                                 <h4 class="mt-1">Ingrese la altura de la columna (mm)</h4>
-                              </td> -->
-                              <!-- <td style="width: 200px;">
-                                 <input style="width: 100%; min-width: 100px;" type="number" class="form-control mt-1"
-                                    id="alturaCol" name="alturaCol" min="1" required autofocus
-                                    onkeydown="validarTeclaMenos(event,'alturaCol')"
-                                    onblur="validarValorPositivo('alturaCol','TXTalturaCol'); validarValorMinimo('alturaCol',200,'TXTalturaCol');" />
-                                 <div id="TXTalturaCol" class="text-center " style="color: red;"></div>
-                              </td> -->
 
                            </tr>
                            <tr>
@@ -1164,9 +1217,9 @@
                         <img src="./img/zona_confinamiento.png" alt="">
                      </div>
                      <div class="col">
-                        <div class="table-responsive">
-                           <table class="table table-bordered">
-                              <thead>
+                        <div class="table-responsive" id="zona_confinamiento_resultado">
+                           <table class="peque table-bordered">
+                              <thead class="text-center">
                                  <th>Zona de confinamiento</th>
                               </thead>
                               <tbody>
@@ -1196,8 +1249,8 @@
                               </tbody>
                            </table>
                            <br>
-                           <table class="table table-bordered">
-                              <thead>
+                           <table class="peque table-bordered">
+                              <thead class="text-center">
                                  <th>Fuera de la Zona de confinamiento</th>
                               </thead>
                               <tbody>
@@ -1220,12 +1273,15 @@
                                     </td>
                                  </tr>
                               </tbody>
-
                            </table>
                         </div>
                      </div>
                   </div>
-
+                  <br>
+                  <div class="container d-flex justify-content-center">
+                     <button class="btn btn-success" onclick="generarPDFColumnas()">Generar reporte PDF</button>
+                  </div>
+                  <br>
 
                </div>
             </div>
@@ -1310,6 +1366,8 @@
                                  <li><a class="dropdown-item" href="manual.html"><button type="button"
                                           class="btn btn-light">Manual de Usuario</button></a>
                                  </li>
+                                 <li><a class="dropdown-item" href="tutorial.html"><button type="button" class="btn btn-light">Video Tutorial</button></a>
+                                 </li>
                                  <li><a class="dropdown-item" href="autores.html"><button type="button"
                                           class="btn btn-light">Autores</button></a>
                                  </li>
@@ -1365,6 +1423,9 @@
    </footer>
    <!-- end footer -->
    <!-- Javascript files-->
+
+   <script src="./js/pdf.js"></script>
+
    <script src="./assets/dist/js/jquery.min.js"></script>
    <script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
    <script src="./assets/dist/js/custom.js"></script>
@@ -1376,7 +1437,6 @@
    <script src="./js/columnas.js"></script>
    <script src="./js/cortanteColumnas.js"></script>
    <script src="./js/diagrama.js"></script>
-
 
 </body>
 

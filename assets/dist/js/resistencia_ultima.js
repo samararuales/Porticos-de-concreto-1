@@ -135,7 +135,7 @@ function resistencia(numeroVarilla, Fc, Fy, h, recubrimiento, diametro, diametro
    document.getElementById("resultadoFinal").style.display = 'block';
 
    if (resMn > MuMaxSuperior) {
-      msgSup = `Para la fibra superior de la viga <b style="color:rgba(0,255,0,1);">si se cumple</b> que ϕMn>ϕMu <br>`;
+      msgSup = `Para la fibra superior de la viga <b style="color:rgba(0,255,0,1);">si se cumple</b> que ϕMn>Mu <br>`;
       cumpleSup = true;
       resMnSup = resMn;
       as_calcSup = AsMin;
@@ -160,9 +160,7 @@ function resistencia(numeroVarilla, Fc, Fy, h, recubrimiento, diametro, diametro
       console.log("CHECK Superior. No cumple. Mn" + resMn + " > " + MuMaxSuperior);
       console.log(Fy, d, Fc, b, resMn);
       cumpleSup = false;
-      // msgSup = `Para la parte superior no se cumple que Mn>Mu, por lo tanto, la cantidad de varillas con el número de varilla supuesta anteriormente <b>no es la correcta</b>.`;
-      ///VERIFICAR SI APARECE ESTE MENSAJE CUANDO SE VUELVE A CALCULAR
-
+     
       resistenciaIteracion("superior", numeroVarilla, b, Fc, Fy, d, MuMaxSuperior, area, recubrimiento, diametroBarraEstribo, diametro, ag);
    }
 
@@ -170,7 +168,7 @@ function resistencia(numeroVarilla, Fc, Fy, h, recubrimiento, diametro, diametro
    let as_calcInf, NoVarillasInf, AsSuministradoInf, InfexcesAs, Infseparacion, InfseparacionMinimaBarras;
    let resMnInf;
    if (resMn > MuMaxInferior) {
-      msgInf = `Para la fibra inferior de la viga <b style="color:rgba(0,255,0,1);">si se cumple</b> que ϕMn>ϕMu <br>`;
+      msgInf = `Para la fibra inferior de la viga <b style="color:rgba(0,255,0,1);">si se cumple</b> que ϕMn>Mu <br>`;
       cumpleInf = true;
       resMnInf = resMn;
       as_calcInf = AsMin;
@@ -191,8 +189,7 @@ function resistencia(numeroVarilla, Fc, Fy, h, recubrimiento, diametro, diametro
    }
    else {
       //Acero necesario con iteracion:::
-      // msgInf = "Para la parte inferior no se cumple que Mn>Mu, por lo tanto, la cantidad de varillas con el número de varilla supuesta anteriormente <b>no es la correcta</b>.";
-
+     
       console.log("CHECK Inferior. No cumple. Mn" + resMn + " > " + MuMaxInferior);
       console.log(Fy, d, Fc, b, resMn);
 
@@ -314,8 +311,7 @@ function resistenciaIteracion(tabla, numeroVarilla, b, Fc, Fy, d, MuMaxSuperior,
    } else {
       etiquetaMsg = 'msgInf';
    }
-   // let msgSup = `Para la parte ${tabla} no se cumple que Mn>Mu, por lo tanto, la cantidad de varillas con el número de varilla supuesta anteriormente <b>no es la correcta</b>.`;
-   // Parte superior de la viga cuando Mu < Mn
+   
    let as_calcSup, NoVarillasSup, AsSuministradoSup, SupexcesAs, Supseparacion, SupseparacionMinimaBarras;
    let resMnSup;
 
@@ -338,7 +334,7 @@ function resistenciaIteracion(tabla, numeroVarilla, b, Fc, Fy, d, MuMaxSuperior,
    document.getElementById(etiquetaMsg).innerHTML = `<div class="col-1">
    <img src="./img/wrong.png"  ></div><div class="col-8">
    Para la fibra ${tabla} de la viga <b style="color:rgba(255,0,0,0.8);">no se cumple</b> que
-   ϕMn>ϕMu, por lo tanto, la cantidad de varillas longitudinales obtenidas
+   ϕMn>Mu, por lo tanto, la cantidad de varillas longitudinales obtenidas
    con el número de varilla supuesta anteriormente <b>no es la correcta</b>.</div>`;
 
    condicion_separacion(tabla, Supseparacion, SupseparacionMinimaBarras,numeroVarilla);
@@ -426,7 +422,7 @@ function recalcularResistencia(tabla) {
       document.getElementById("resultadoFinal").style.display = 'block';
 
       if (resMn > MuMaxSuperior) {
-         msgSup = `Para la fibra ${tabla} de la viga <b style="color:rgba(0,255,0,1);">si se cumple</b> que ϕMn>ϕMu <br>`;
+         msgSup = `Para la fibra ${tabla} de la viga <b style="color:rgba(0,255,0,1);">si se cumple</b> que ϕMn>Mu <br>`;
          cumpleSup = true;
          resMnSup = resMn;
          as_calcSup = AsMin;
@@ -452,13 +448,10 @@ function recalcularResistencia(tabla) {
          console.log(Fy, d, Fc, b, resMn);
          cumpleSup = false;
 
-         msgSup = `Para la fibra ${tabla} no se cumple que ϕMn>ϕMu, por lo tanto, la cantidad de varillas longitudinales obtenidas con el número de varilla supuesta anteriormente <b>no es la correcta</b>.`;
+         msgSup = `Para la fibra ${tabla} no se cumple que ϕMn>Mu, por lo tanto, la cantidad de varillas longitudinales obtenidas con el número de varilla supuesta anteriormente <b>no es la correcta</b>.`;
 
          resistenciaIteracion(tabla, numeroVarillaSup, b, Fc, Fy, d, MuMaxSuperior, area, recubrimiento, diametroBarraEstribo, diametro, ag);
-         //    document.getElementById(etiquetaMsg).innerHTML = `<div class="col-2">
-         // <img src="./img/wrong.png"></div><div class="col-8" style="background-color:red;">
-         // ${msgSup}</div>
-         // `;
+         
       }
 
 

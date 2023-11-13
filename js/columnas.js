@@ -24,6 +24,7 @@ function limpiar() {
     document.getElementById('condicion_separacionF').innerHTML = '';
     document.getElementById('tabla_diagrama').style.display = 'none';
     document.getElementById('campos_cortante').style.display = 'none';
+    document.getElementById('zonConf').style.display = 'none';
 }
 function borrar() {
     document.getElementById('b').value = '';
@@ -564,6 +565,7 @@ function calcularColumna() {
         let roMin, Ac, AsMin, NoVarillas, As_Suministrado, excesAs, separacion, separacionBase, separacionAltura, separacionMaxima;
         roMin = 0.01;
         separacionMaxima = 150;
+        let d= h-recubrimiento-(diametro/2)-diametroBarraEstribo;
         let sep_minima = separacionMinimaVars(diametro, ag);
 
         Ac = cuantiaConcreto(b, h);
@@ -607,6 +609,11 @@ function calcularColumna() {
                           <td>Pmin</td>
                           <td>${roMin.toFixed(4)}</td>
                           <td>&nbsp;</td>
+                       </tr>
+                       <tr>
+                          <td>d</td>
+                          <td>${d}</td>
+                          <td>mm</td>
                        </tr>
                        <tr>
                           <td>Recubrimiento</td>
@@ -717,7 +724,7 @@ function calcularColumna() {
         let es_acero = 200000;
 
         document.getElementById("nfibras").innerHTML = numFibras;
-        document.getElementById("lfibra").innerHTML = longFibra;
+        document.getElementById("lfibra").innerHTML = longFibra.toFixed(2);
         document.getElementById("es_concreto").innerHTML = es_concreto.toFixed(2);
         document.getElementById("es_acero").innerHTML = es_acero;
         document.getElementById("recub").innerHTML = recubrimiento;

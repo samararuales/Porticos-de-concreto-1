@@ -207,8 +207,13 @@ function calcular_cortante() {
               <td>mm<sup>2</sup></td>
             </tr>
             <tr>
-              <td>Cortante Nominal</td>
+              <td>Cortante Nominal (Vn)</td>
               <td id="res_OVN"></td>
+              <td>kN</td>
+            </tr>
+            <tr>
+              <td>Cortante Última (Vu)</td>
+              <td id="res_Vu">${Vu}</td>
               <td>kN</td>
             </tr>
         </tbody>
@@ -234,7 +239,7 @@ function calcular_cortante() {
 
         let resistenciaOVn = resistenciaVigaCortante(acero_suministrado, Fy, d, separacion_longitudinal);
         console.log("resistenciaOVn => " + resistenciaOVn);
-        document.getElementById('res_OVN').innerHTML = resistenciaOVn;
+        document.getElementById('res_OVN').innerHTML = resistenciaOVn.toFixed(2);
 
 
         document.getElementById('cortante_fin').innerHTML = `${resistenciaOVn.toFixed(2)}kN`;
@@ -248,12 +253,12 @@ function calcular_cortante() {
         // Vu = 81.49;
         if (resistenciaOVn <= Vu) {
             //Disminuir maximo hasta 50mm la separacion longitudinal y recalcular resistencia
-            document.getElementById('condicion_resistencia').innerHTML = `Para este caso <b class="red">no se cumple</b> que la resistencia Vn>Vu( ${resistenciaOVn.toFixed(2)}kN <= ${Vu}kN ).`;
+            document.getElementById('condicion_resistencia').innerHTML = `Para este caso <b class="red">no se cumple</b> que la resistencia ϕVn>Vu( ${resistenciaOVn.toFixed(2)}kN <= ${Vu}kN ).`;
             chequearResistencia(separacion_longitudinal, resistenciaOVn, Vu, Fy, d);
 
         } else {
             //si
-            document.getElementById('condicion_resistencia').innerHTML = `Para este caso <b class="green">si se cumple</b> que la resistencia Vn>Vu. ${resistenciaOVn.toFixed(2)}kN > ${Vu}kN`;
+            document.getElementById('condicion_resistencia').innerHTML = `Para este caso <b class="green">si se cumple</b> que la resistencia ϕVn>Vu. ${resistenciaOVn.toFixed(2)}kN > ${Vu}kN`;
         }
     }
 }

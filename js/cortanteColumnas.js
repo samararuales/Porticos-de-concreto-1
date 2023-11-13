@@ -1,7 +1,9 @@
 
 
 function calcular_cortante_columna() {
-    document.getElementById('formulas_cortante').style.display = 'block';
+    document.getElementById('tabla_resultado_cortante_cols').style.display = 'none';
+    document.getElementById("resultado_cortante_cols").innerHTML = "";
+
 
     document.getElementById('cumple_estribos').innerHTML = '';
     document.getElementById('NOcumple_estribos').innerHTML = '';
@@ -26,6 +28,9 @@ function calcular_cortante_columna() {
     let diametroVarLong = Number(document.getElementById("diametro").value);
     let areaBarraLong = Number(document.getElementById("area").value);
     let recubrimiento = Number(document.getElementById("recubrimiento").value);
+    let numeroBarraEstribo = Number(document.getElementById("numeroVarillaEstribo").value); //
+    let Vu = Number(document.getElementById("Vu_col").value);
+
     let diametroBarraEstribo = Number(document.getElementById("diametro_estribo").value);
     let ag = Number(document.getElementById("ag").value);
 
@@ -57,6 +62,14 @@ function calcular_cortante_columna() {
         console.log("Hay campos incorrectos");
         document.getElementById("max_ag").innerHTML = '<h3 class="text-danger">Debe ingresar un tamaño máximo mayor a 10 mm</h3>';
         document.getElementById("base").textContent = '(*) Complete los campos incorrectos';
+    } else if (Vu == '') {
+        console.log('NOTA: No puede ser vacío');
+        document.getElementById("datos_cortante").textContent = "(*) NOTA: Tener en cuenta el valor de Vu";
+        document.getElementById("inputVu_col").innerHTML = '<h3 class="text-danger">El valor no puede estar vacío</h3>';
+    } else if (Vu < 0) {
+        console.log('NOTA: No puede ser negativo');
+        document.getElementById("datos_cortante").textContent = "(*) NOTA: Tener en cuenta el valor de Vu";
+        document.getElementById("inputVu_col").innerHTML = '<h3 class="text-danger">El valor no puede ser negativo</h3>';
     } else {
         if (Fc == '') {
             Fc = Fc1;
@@ -77,7 +90,11 @@ function calcular_cortante_columna() {
         let sepB = 6 * diametroVarLong;
         let sepC = 150;
         let sep = Math.min(sepA, sepB, sepC);
-        let separacion = Math.round(sep / 10) * 10;
+        let separacion = Math.round(sep / 10) * 10;///
+
+        document.getElementById('formulas_cortante').style.display = 'block';
+
+
         document.getElementById('sep_varillas').innerHTML = `${separacion}mm`;
         if (separacion < 50) {
             console.log(`S=${separacion} es menor a 50. Se debe cambiar de barra Long`);
@@ -88,6 +105,66 @@ function calcular_cortante_columna() {
 
         } else {
 
+
+            document.getElementById("resultado_cortante_cols").innerHTML = `
+        <h1>Resumen de los valores calculados</h1>
+        <table class="peque">
+        <thead>
+            <tr>
+              <th scope="col">Dato</th>
+              <th scope="col">Valor</th>
+              <th scope="col">Unidades</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td>Separación entre varillas</td>
+              <td id="separacion_vars"></td>
+              <td>mm</td>
+            </tr>
+            <tr>
+              <td>Área confinada</td>
+              <td id="area_conf"></td>
+              <td>mm<sup>2</sup></td>
+            </tr>
+            <tr>
+              <td>No. Varilla Estribo</td>
+              <td>${numeroBarraEstribo}</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>Refuerzo mínimo vertical</td>
+              <td id="ref_min_vertical"></td>
+              <td>mm<sup>2</sup></td>
+            </tr>
+            <tr>
+              <td>No Estribos vertical</td>
+              <td id="no_est_vertical"></td>
+              <td>und</td>
+            </tr>
+            <tr>
+              <td>Refuerzo mínimo horizontal</td>
+              <td id="ref_min_horizontal"></td>
+              <td>mm<sup>2</sup></td>
+            </tr>
+            <tr>
+              <td>No Estribos horizontal</td>
+              <td id="no_est_horizontal"></td>
+              <td>und</td>
+            </tr>
+            <tr>
+              <td>Cortante Nominal (Vn)</td>
+              <td id="res_OVN"></td>
+              <td>kN</td>
+            </tr>
+            <tr>
+              <td>Cortante Última (Vu)</td>
+              <td id="res_Vu">${Vu}</td>
+              <td>kN</td>
+            </tr>
+        </tbody>
+        </table>`;
+
             console.log(`S=${separacion} es mayor a 50`);
             msgResistencia = `Para este caso <b class="green">sí se cumple</b> que la separación S (${separacion}mm) > 50mm`;
             document.getElementById('condicion_separacion').innerHTML = msgResistencia;
@@ -97,7 +174,7 @@ function calcular_cortante_columna() {
             ///area confinada
             let base = b - (recubrimiento * 2) - (diametroBarraEstribo * 2);
             let altura = h - (recubrimiento * 2) - (diametroBarraEstribo * 2);
-            let ach = base * altura;
+            let ach = base * altura;///
             document.getElementById('baseCort').innerHTML = `${base}mm`;
             document.getElementById('altCort').innerHTML = `${altura}mm`;
             document.getElementById('a_conf').innerHTML = `${base}mm * ${altura}mm = ${ach}mm<sup>2</sup>`;
@@ -105,8 +182,8 @@ function calcular_cortante_columna() {
             //--refuerzo minimo (vertical)
             let ash1Vertical = ((0.3 * separacion * b * Fc) / Fy) * (((b * h) / (ach)) - 1);
             let ash2Vertical = ((0.09 * separacion * b * Fc) / Fy);
-            let ashVertical = Math.max(ash1Vertical, ash2Vertical);
-            let noEstribosVert = Math.max(2, Math.floor(ashVertical / areaBarraEstribo));
+            let ashVertical = Math.max(ash1Vertical, ash2Vertical);///
+            let noEstribosVert = Math.max(2, Math.floor(ashVertical / areaBarraEstribo));///
             document.getElementById('ash1Cort').innerHTML = `${ash1Vertical.toFixed(2)}mm<sup>2</sup>`;
             document.getElementById('ash2Cort').innerHTML = `${ash2Vertical.toFixed(2)}mm<sup>2</sup>`;
             document.getElementById('ref_min').innerHTML = `(${ash1Vertical.toFixed(2)}mm<sup>2</sup>; ${ash2Vertical.toFixed(2)}mm<sup>2</sup>) = ${ashVertical.toFixed(2)}mm<sup>2</sup>`;
@@ -120,45 +197,37 @@ function calcular_cortante_columna() {
             } else {
                 numeroEstribosVertical = 4;
             }
-            document.getElementById("refMinVert2").innerHTML = `<img src="./img/refVertical_${numeroEstribosVertical}_${cantidadVarillas}.png" alt="" width="250">`;
-            document.getElementById("refMinVert1").innerHTML = `<img src="./img/refVertical_${numeroEstribosVertical}_${cantidadVarillas}.png" alt="" width="250">`;
+            if (cantidadVarillas == 4 || cantidadVarillas == 6 || cantidadVarillas == 8 || cantidadVarillas == 10 || cantidadVarillas == 12) {
+                document.getElementById("refMinVert2").innerHTML = `<img src="./img/refVertical_${numeroEstribosVertical}_${cantidadVarillas}.png" alt="" width="250">`;
+                document.getElementById("refMinVert1").innerHTML = `<img src="./img/refVertical_${numeroEstribosVertical}_${cantidadVarillas}.png" alt="" width="250">`;
+            }
 
             if (noEstribosVert != numeroEstribosVertical) {
                 // ///se debe disminuir la separacion
 
                 document.getElementById('reducir_separacion').style.display = 'block';
-                
+
                 reducirSeparacionVert(separacion, b, Fc, Fy, h, ach, areaBarraEstribo, numeroEstribosVertical, cantidadVarillas);
 
-                // document.getElementById('NOcumple_estribos').innerHTML = `<b class="text-warning">La cantidad de estribos sobrepasa la cantidad de las varillas a amarrar. Se debe disminuir la separación hasta 50mm.</b>`;
-                // separacion = 50;
-                // //refuerzo minimo (vertical)
-                // ash1Vertical = ((0.3 * separacion * b * Fc) / Fy) * (((b * h) / (ach)) - 1);
-                // ash2Vertical = ((0.09 * separacion * b * Fc) / Fy);
-                // ashVertical = Math.max(ash1Vertical, ash2Vertical);
-                // noEstribosVert = Math.max(2, Math.floor(ashVertical / areaBarraEstribo));
-                // document.getElementById('ash1CortR').innerHTML = `${ash1Vertical.toFixed(2)}mm<sup>2</sup>`;
-                // document.getElementById('ash2CortR').innerHTML = `${ash2Vertical.toFixed(2)}mm<sup>2</sup>`;
 
-                // document.getElementById('ashReduc').innerHTML = `(${ash1Vertical.toFixed(2)}mm<sup>2</sup>; ${ash2Vertical.toFixed(2)}mm<sup>2</sup>) = ${ashVertical.toFixed(2)}mm<sup>2</sup>`;
-                // document.getElementById('NoEstribsRed').innerHTML = `${noEstribosVert} und`;
 
-                // if (noEstribosVert != numeroEstribosVertical) {
-                //     //se debe cambiar la barra longitudinal
-                //     document.getElementById('NoEstribsRed').innerHTML = `${noEstribosVert} und`;
-                //     document.getElementById('NOcumple_estribos2').innerHTML = `<b class="text-warning">Se recomienda cambiar de barra longitudinal supuesta para tener un número de estribos suficiente.</b>
-                // `;
 
-                // } else {
-                //     //se muestra resultados
-                //     document.getElementById("refMinVert2").innerHTML = `<img src="./img/refVertical_${noEstribosVert}_${cantidadVarillas}.png" alt="" width="250">`;
-                //     document.getElementById('cumple_estribos2').innerHTML = `<b class="green">El Número de estribos es suficiente</b>`;
-                // }
             } else {
                 //se muestra resultados
-                document.getElementById("refMinVert1").innerHTML = `<img src="./img/refVertical_${noEstribosVert}_${cantidadVarillas}.png" alt="" width="250">`;
+                if (cantidadVarillas == 4 || cantidadVarillas == 6 || cantidadVarillas == 8 || cantidadVarillas == 10 || cantidadVarillas == 12) {
+                    document.getElementById("refMinVert1").innerHTML = `<img src="./img/refVertical_${noEstribosVert}_${cantidadVarillas}.png" alt="" width="250">`;
+                }
                 document.getElementById('reducir_separacion').style.display = 'none';
                 document.getElementById('cumple_estribos').innerHTML = `<b class="green">El Número de estribos es suficiente</b>`;
+
+                // Mostrar tabla de resumen final
+                // document.getElementById('tabla_resultado_cortante_cols').style.display = 'block';
+                // document.getElementById("separacion_vars").innerHTML = separacion;
+                // document.getElementById("area_conf").innerHTML = ach;
+                document.getElementById("ref_min_vertical").innerHTML = ashVertical.toFixed(2);
+                document.getElementById("no_est_vertical").innerHTML = noEstribosVert;
+                // document.getElementById("ref_min_horizontal").innerHTML = ashHorizontal.toFixed(2);
+                // document.getElementById("no_est_horizontal").innerHTML = noEstribosHor;
             }
 
 
@@ -167,7 +236,7 @@ function calcular_cortante_columna() {
             separacion = Math.round(sep / 10) * 10;
             let ash1Horizontal = ((0.3 * separacion * h * Fc) / Fy) * (((b * h) / (ach)) - 1);
             let ash2Horizontal = ((0.09 * separacion * h * Fc) / Fy);
-            let ashHorizontal = Math.max(ash1Horizontal, ash2Horizontal);
+            let ashHorizontal = Math.max(ash1Horizontal, ash2Horizontal);///
             let noEstribosHor = Math.max(2, Math.floor(ashHorizontal / areaBarraEstribo));
             document.getElementById('ash1CortHor').innerHTML = `${ash1Horizontal.toFixed(2)}mm<sup>2</sup>`;
             document.getElementById('ash2CortHor').innerHTML = `${ash2Horizontal.toFixed(2)}mm<sup>2</sup>`;
@@ -182,43 +251,29 @@ function calcular_cortante_columna() {
             } else {
                 numeroEstribosHorizontal = 4;
             }
-            document.getElementById("refMinHor1").innerHTML = `<img src="./img/refHorizontal_${numeroEstribosHorizontal}_${cantidadVarillas}.png" alt="" width="250">`;
-            document.getElementById("refMinHor2").innerHTML = `<img src="./img/refHorizontal_${numeroEstribosHorizontal}_${cantidadVarillas}.png" alt="" width="250">`;
-
+            if (cantidadVarillas == 4 || cantidadVarillas == 6 || cantidadVarillas == 8 || cantidadVarillas == 10 || cantidadVarillas == 12) {
+                document.getElementById("refMinHor1").innerHTML = `<img src="./img/refHorizontal_${numeroEstribosHorizontal}_${cantidadVarillas}.png" alt="" width="250">`;
+                document.getElementById("refMinHor2").innerHTML = `<img src="./img/refHorizontal_${numeroEstribosHorizontal}_${cantidadVarillas}.png" alt="" width="250">`;
+            }
             if (noEstribosHor != numeroEstribosHorizontal) {
                 // ///se debe disminuir la separacion
                 document.getElementById('reducir_separacionHor').style.display = 'block';
                 reducirSeparacionHor(separacion, b, Fc, Fy, h, ach, areaBarraEstribo, numeroEstribosHorizontal, cantidadVarillas);
 
-                // document.getElementById('NOcumple_estribosHor').innerHTML = `<b class="text-warning">La cantidad de estribos sobrepasa la cantidad de las varillas a amarrar. Se debe disminuir la separación hasta 50mm.</b>`;
-                // separacion = 50;
-                // //refuerzo minimo (vertical)
-                // ash1Horizontal = ((0.3 * separacion * h * Fc) / Fy) * (((b * h) / (ach)) - 1);
-                // ash2Horizontal = ((0.09 * separacion * h * Fc) / Fy);
-                // ashHorizontal = Math.max(ash1Horizontal, ash2Horizontal);
-                // noEstribosHor = Math.max(2, Math.floor(ashHorizontal / areaBarraEstribo));
-                // document.getElementById('ash1CortRHor').innerHTML = `${ash1Horizontal.toFixed(2)}mm<sup>2</sup>`;
-                // document.getElementById('ash2CortRHor').innerHTML = `${ash2Horizontal.toFixed(2)}mm<sup>2</sup>`;
-
-                // document.getElementById('ashReducHor').innerHTML = `(${ash1Horizontal.toFixed(2)}mm<sup>2</sup>; ${ash2Horizontal.toFixed(2)}mm<sup>2</sup>) = ${ashHorizontal.toFixed(2)}mm<sup>2</sup>`;
-                // document.getElementById('NoEstribsRedHor').innerHTML = `${noEstribosHor} und`;
-
-                // if (noEstribosHor != numeroEstribosHorizontal) {
-                //     //se debe cambiar la barra longitudinal
-                //     document.getElementById('NoEstribsRedHor').innerHTML = `${noEstribosHor} und`;
-                //     document.getElementById('NOcumple_estribos2Hor').innerHTML = `<b class="text-warning">Se recomienda cambiar de barra longitudinal supuesta para tener un número de estribos suficiente.</b>
-                // `;
-
-                // } else {
-                //     //se muestra resultados
-                //     document.getElementById("refMinHor2").innerHTML = `<img src="./img/refHorizontal_${noEstribosHor}_${cantidadVarillas}.png" alt="" width="250">`;
-                //     document.getElementById('cumple_estribos2Hor').innerHTML = `<b class="green">El Número de estribos es suficiente</b>`;
-                // }
             } else {
                 //se muestra resultados
-                document.getElementById("refMinHor1").innerHTML = `<img src="./img/refHorizontal_${noEstribosHor}_${cantidadVarillas}.png" alt="" width="250">`;
+                if (cantidadVarillas == 4 || cantidadVarillas == 6 || cantidadVarillas == 8 || cantidadVarillas == 10 || cantidadVarillas == 12) {
+                    document.getElementById("refMinHor1").innerHTML = `<img src="./img/refHorizontal_${noEstribosHor}_${cantidadVarillas}.png" alt="" width="250">`;
+                }
                 document.getElementById('reducir_separacionHor').style.display = 'none';
                 document.getElementById('cumple_estribosHor').innerHTML = `<b class="green">El Número de estribos es suficiente</b>`;
+
+                // Mostrar tabla de resumen final
+                // document.getElementById('tabla_resultado_cortante_cols').style.display = 'block';
+                document.getElementById("separacion_vars").innerHTML = separacion;
+                // document.getElementById("area_conf").innerHTML = ach;
+                document.getElementById("ref_min_horizontal").innerHTML = ashHorizontal.toFixed(2);
+                document.getElementById("no_est_horizontal").innerHTML = noEstribosHor;
             }
             console.log(`Horiz: ${noEstribosHor} de ${numeroEstribosHorizontal}. Vert: ${noEstribosVert} de ${numeroEstribosVertical}`);
 
@@ -232,12 +287,94 @@ function calcular_cortante_columna() {
                    style="width: 300px;">
              </div>`;
             }
+
+            document.getElementById("area_conf").innerHTML = ach;
+            document.getElementById("separacion_vars").innerHTML = separacion;
+            // 
+            document.getElementById('tabla_resultado_cortante_cols').style.display = 'block';
+
+
+
+
+            //////////Resistencia Vu
+            let d=h-recubrimiento-diametroVarLong/2-diametroBarraEstribo;
+            let acero_suministrado=142;
+            let resistenciaOVn = ((0.75 * acero_suministrado * Fy * d) / separacion)/1000;
+            console.log("resistenciaOVn => " + resistenciaOVn);
+            document.getElementById('res_OVN').innerHTML = resistenciaOVn.toFixed(2);
+
+
+            document.getElementById('cortante_fin').innerHTML = `${resistenciaOVn.toFixed(2)}kN`;
+
+
+            document.getElementById('resSep').innerHTML = '';
+            //document.getElementById('sep_Long').innerHTML = '';
+            //document.getElementById('res_OVN').innerHTML = '';
+            document.getElementById('cambioValores').innerHTML = '';
+
+            // Vu = 81.49;
+            if (resistenciaOVn <= Vu) {
+                //Disminuir maximo hasta 50mm la separacion longitudinal y recalcular resistencia
+                document.getElementById('condicion_resistencia').innerHTML = `Para este caso <b class="red">no se cumple</b> que la resistencia ϕVn>Vu( ${resistenciaOVn.toFixed(2)}kN <= ${Vu}kN ).`;
+                chequearResistencia(separacion, resistenciaOVn, Vu, Fy, d);
+
+            } else {
+                //si
+                document.getElementById('condicion_resistencia').innerHTML = `Para este caso <b class="green">si se cumple</b> que la resistencia ϕVn>Vu. ${resistenciaOVn.toFixed(2)}kN > ${Vu}kN`;
+            }
+
+
         }
     }
 }
 
+function chequearResistencia(separacion_longitudinal, resistenciaOVn, Vu, Fy, d) {
+    document.getElementById('res_OVN').innerHTML = resistenciaOVn.toFixed(2);
+
+    document.getElementById('resSep').innerHTML = '';
+    //document.getElementById('separacion_vars').innerHTML = '';
+    //document.getElementById('res_OVN').innerHTML = '';
+    document.getElementById('cambioValores').innerHTML = '';
+
+    separacion_longitudinal -= 5;
+
+    document.getElementById('resSep').innerHTML = `Se disminuye la separación hasta ${separacion_longitudinal}mm y se volvió a calcular.`;
+
+    console.log("Separacion en: ", separacion_longitudinal);
+    // document.getElementById('separacion_vars').innerHTML = separacion_longitudinal;
+
+    let acero_suministrado = 142;//av_suministrado
+    console.log("acero_suministrado => " + acero_suministrado);
+
+    resistenciaOVn = ((0.75 * acero_suministrado * Fy * d) / separacion_longitudinal)/1000;
+    console.log("y la resistenciaOVn => " + resistenciaOVn);
+    document.getElementById('res_OVN').innerHTML = resistenciaOVn.toFixed(2);
+
+    if (resistenciaOVn <= Vu) {
+        console.log("Aun No cumple resistencia");
+        if (separacion_longitudinal >= 50) {
+            chequearResistencia(separacion_longitudinal, resistenciaOVn, Vu, Fy, d);
+        } else {
+            document.getElementById('cambioValores').innerHTML = `Se recomineda cambiar de valores. Se obtiene la resistencia: ${resistenciaOVn.toFixed(2)}kN y la separación es menor a 50mm`;
+        }
+    }
+    else {
+        console.log("Ya cumple resistencia");
+        if (separacion_longitudinal < 50) {
+            document.getElementById('cambioValores').innerHTML = `Se recomienda cambiar valores. Se obtiene la resistencia: ${resistenciaOVn.toFixed(2)}kN > ${Vu}kN, pero la separación es menor a 50mm`;
+        } else {
+            document.getElementById('cambioValores').innerHTML = `Se obtiene la resistencia: ${resistenciaOVn.toFixed(2)}kN > ${Vu}kN`;
+        }
+    }
+}
+
+
+
+
 function reducirSeparacionVert(separacion, b, Fc, Fy, h, ach, areaBarraEstribo, numeroEstribosVertical, cantidadVarillas) {
     ///se debe disminuir la separacion maximo hasta 50mm
+    //Volver a colocar los nuevos valores
+    // document.getElementById("separacion_vars").innerHTML = separacion;
 
     // document.getElementById('reducir_separacion').style.display = 'block';
     document.getElementById('NOcumple_estribos').innerHTML = `<b class="text-warning">La cantidad de estribos sobrepasa la cantidad de las varillas a amarrar. Se debe disminuir la separación máximo hasta 50mm</b>`;
@@ -249,6 +386,9 @@ function reducirSeparacionVert(separacion, b, Fc, Fy, h, ach, areaBarraEstribo, 
     let ash2Vertical = ((0.09 * separacion * b * Fc) / Fy);
     let ashVertical = Math.max(ash1Vertical, ash2Vertical);
     let noEstribosVert = Math.max(2, Math.floor(ashVertical / areaBarraEstribo));
+    document.getElementById("ref_min_vertical").innerHTML = ashVertical.toFixed(2);
+    document.getElementById("no_est_vertical").innerHTML = noEstribosVert;
+
     console.log(`Separacion en: ${separacion} - NoEstribosVert: ${noEstribosVert}`);
 
     document.getElementById('ash1CortR').innerHTML = `${ash1Vertical.toFixed(2)}mm<sup>2</sup>`;
@@ -269,13 +409,22 @@ function reducirSeparacionVert(separacion, b, Fc, Fy, h, ach, areaBarraEstribo, 
         }
     } else {
         //se muestra resultados
-        document.getElementById("refMinVert2").innerHTML = `<img src="./img/refVertical_${noEstribosVert}_${cantidadVarillas}.png" alt="" width="250">`;
+        if (cantidadVarillas == 4 || cantidadVarillas == 6 || cantidadVarillas == 8 || cantidadVarillas == 10 || cantidadVarillas == 12) {
+            document.getElementById("refMinVert2").innerHTML = `<img src="./img/refVertical_${noEstribosVert}_${cantidadVarillas}.png" alt="" width="250">`;
+        }
         document.getElementById('cumple_estribos2').innerHTML = `<b class="green">El Número de estribos es suficiente</b>`;
+
     }
+
+
+
 }
 
 function reducirSeparacionHor(separacion, b, Fc, Fy, h, ach, areaBarraEstribo, numeroEstribosHorizontal, cantidadVarillas) {
     ///se debe disminuir la separacion maximo hasta 50mm
+    //Volver a colocar los valores
+    // document.getElementById("separacion_vars").innerHTML = separacion;
+
     // document.getElementById('reducir_separacionHor').style.display = 'block';
     document.getElementById('NOcumple_estribosHor').innerHTML = `<b class="text-warning">La cantidad de estribos sobrepasa la cantidad de las varillas a amarrar. Se debe disminuir la separación máximo hasta 50mm.</b>`;
     separacion -= 5;
@@ -286,6 +435,8 @@ function reducirSeparacionHor(separacion, b, Fc, Fy, h, ach, areaBarraEstribo, n
     let ash2Horizontal = ((0.09 * separacion * h * Fc) / Fy);
     let ashHorizontal = Math.max(ash1Horizontal, ash2Horizontal);
     let noEstribosHor = Math.max(2, Math.floor(ashHorizontal / areaBarraEstribo));
+    document.getElementById("ref_min_horizontal").innerHTML = ashHorizontal.toFixed(2);
+    document.getElementById("no_est_horizontal").innerHTML = noEstribosHor;
     console.log(`Separacion en: ${separacion} - NoEstribosHor: ${noEstribosHor}`);
 
     document.getElementById('ash1CortRHor').innerHTML = `${ash1Horizontal.toFixed(2)}mm<sup>2</sup>`;
@@ -306,12 +457,18 @@ function reducirSeparacionHor(separacion, b, Fc, Fy, h, ach, areaBarraEstribo, n
 
     } else {
         //se muestra resultados
-        document.getElementById("refMinHor2").innerHTML = `<img src="./img/refHorizontal_${noEstribosHor}_${cantidadVarillas}.png" alt="" width="250">`;
+        if (cantidadVarillas == 4 || cantidadVarillas == 6 || cantidadVarillas == 8 || cantidadVarillas == 10 || cantidadVarillas == 12) {
+            document.getElementById("refMinHor2").innerHTML = `<img src="./img/refHorizontal_${noEstribosHor}_${cantidadVarillas}.png" alt="" width="250">`;
+        }
         document.getElementById('cumple_estribos2Hor').innerHTML = `<b class="green">El Número de estribos es suficiente</b>`;
+
     }
+
 }
 
 function calcularLongEst() {
+    document.getElementById('zonConf').style.display = 'none';
+
     document.getElementById("TXTluzLibreLong").textContent = '';
     // document.getElementById("TXTalturaCol").textContent = '';
     document.getElementById("TXTluzLibre").textContent = '';
