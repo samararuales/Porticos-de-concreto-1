@@ -199,7 +199,7 @@ button {
 }
 
 .container1 {
-     max-width: 1370px;
+     /* max-width: 1370px; */
      width: 100%;
      padding-right: 15px;
      padding-left: 15px;
@@ -211,6 +211,7 @@ button {
 /*---------------------------- preloader area ----------------------------*/
 
 .loader_bg {
+     /* si se usa */
      position: fixed;
      z-index: 9999999;
      background: #fff;
@@ -219,6 +220,7 @@ button {
 }
 
 .loader {
+     /* ssss */
      height: 100%;
      width: 100%;
      position: absolute;
@@ -230,6 +232,7 @@ button {
 }
 
 .loader img {
+     /* ssss */
      width: 280px;
 }
 
@@ -246,6 +249,7 @@ header {
 }
 
 .barra_nav {
+     /* sss */
      background: rgba(36, 40, 43, 1);
      border-bottom: 5px solid#1293d4;
      color: white;
@@ -278,6 +282,7 @@ ul.email li img {
 }
 
 .sidepanel {
+     /* si se usa */
      width: 0;
      position: fixed;
      z-index: 9999999;
@@ -291,6 +296,7 @@ ul.email li img {
 }
 
 .sidepanel a {
+     /* SSS */
      padding: 8px 8px 8px 32px;
      text-decoration: none;
      font-size: 25px;
@@ -300,10 +306,12 @@ ul.email li img {
 }
 
 .sidepanel a:hover {
+     /* sss */
      color: #214a57;
 }
 
 .sidepanel .closebtn {
+     /* sss */
      position: absolute;
      top: 0;
      right: 25px;
@@ -311,6 +319,7 @@ ul.email li img {
 }
 
 .openbtn {
+     /* sss */
      cursor: pointer;
      background-color: transparent;
      color: white;
@@ -318,17 +327,17 @@ ul.email li img {
 }
 
 
-/** banner_main **/
 
 .banner_main {
+     /* ss */
      background: url(../../../img/cabecera.jpg);
-     background-size: 100% 100%;
+     background-size: cover;
      background-position: center;
-     background-repeat: no-repeat;
+     /* background-repeat: no-repeat;
      height: 634px;
-     display: flex;
+     display: flex;*/
      justify-content: center;
-     align-items: center;
+     align-items: center; 
 }
 
 .normas {
@@ -370,9 +379,6 @@ ul.email li img {
      right: inherit;
 }
 
-.banner_main {
-     position: relative;
-}
 
 .relative {
      position: inherit;
@@ -387,7 +393,7 @@ ul.email li img {
 
 .introduccion {
      background: rgba(255, 255, 255, 0.9);
-     padding: 45px 20px 15px 20px;
+     padding: 45px 3% 15px 3%;
 }
 
 .manual {
@@ -401,27 +407,27 @@ ul.email li img {
 } */
 .banner_main .bg_white h1 {
      color: #141111;
-     font-size: 70px;
-     line-height: 84px;
+     /* font-size: 70px; */
+     /* line-height: 84px; */
      font-weight: 700;
-     padding-bottom: 22px;
+     /* padding-bottom: 22px; */
 }
 
 .banner_main .bg_white p {
      color: #2d2d2d;
-     line-height: 30px;
+     /* line-height: 30px; */
      font-weight: 500;
-     padding-bottom: 0px;
+     /* padding-bottom: 0px; */
 }
 
 .banner_main .ban_btn {
-     display: block;
+     /* display: block; */
      background: #fff;
      color: #000;
      font-size: 17px;
      font-weight: 500;
      margin: 0 auto;
-     margin-top: 55px;
+     /* margin-top: 55px; */
 }
 
 .ban_btn .carousel-control-next-icon,
@@ -449,8 +455,8 @@ ul.email li img {
      top: -257px;
 }*/
 .grupo-parrafo {
-     padding: 10px 25px 5px 25px;
-     text-align: justify;
+     padding: 10px 15px 5px 15px;
+     text-align: left;
      font-size: 18px;
 }
 
@@ -466,12 +472,12 @@ ul.email li img {
 }
 
 .about_box {
-     padding: 20px 0;
+     padding: 20px;
      box-shadow: 4px 0 27px rgba(02, 3, 8, 0.20);
 }
 
 .about_box_text {
-     padding-left: 50px;
+     padding-left: 0px;
 }
 
 .about_box_text h3 {
@@ -540,6 +546,8 @@ ul.email li img {
 }
 
 
+
+
 /** building **/
 
 .building {
@@ -567,7 +575,6 @@ ul.email li img {
 }
 
 
-/** end building **/
 
 
 /** services **/
@@ -779,7 +786,7 @@ ul.email li img {
 
 .titulo {
      font-size: 50px;
-     line-height: 84px;
+     /* line-height: 84px; */
      font-weight: 700;
      padding-bottom: 22px;
      text-align: center;
@@ -789,7 +796,6 @@ ul.email li img {
 /** end instant **/
 
 
-/** footer **/
 
 .footer {
      background: #1260d4;
@@ -805,7 +811,7 @@ ul.social_icon {
 
 ul.social_icon li {
      display: inline-block;
-     padding-right: 190px;
+     padding-right:5%;
 }
 
 ul.social_icon li:last-child {
@@ -851,7 +857,7 @@ ul.social_icon li a:hover {
 }
 
 ul.xple_menu {
-     padding-top: 29px;
+     padding-top: 10px;
 }
 
 ul.xple_menu li a {
@@ -879,7 +885,7 @@ ul.xple_menu li a::before {
 }
 
 ul.re_post {
-     padding-top: 35px;
+     padding-top: 10px;
 }
 
 ul.re_post li {
@@ -903,7 +909,6 @@ ul.re_post li {
 }
 
 
-/** end footer **/
 
 
 /*- - ener page css--*/
@@ -917,9 +922,9 @@ ul.re_post li {
      padding-bottom: 90px;
 }
 
-.inner_page .footer {
+/* .inner_page .footer {
      padding-top: 50px;
-}
+} */
 
 
 /** contact **/
@@ -1161,7 +1166,7 @@ td {
      font-size: 20px;
      font-weight: bolder;
      color: #000;
-     padding-left: 15px;
+     padding-left: 25px;
 }
 
 #formulas_cortante {
@@ -1179,33 +1184,39 @@ td {
      color: rgb(1, 9, 26);
 }
 
-.colf_4 {
+/* .colf_4 {
      -ms-flex: 0 0 30.333333%;
      flex: 0 0 30.333333%;
      max-width: 30.333333%;
 
-}
+} */
 
 .d_none_primary {
+     /* sss */
      background-color: rgba(0, 123, 255, 0.5);
      color: white;
      border: rgba(0, 123, 255, 1) solid 2px;
+     width: 142px;
 }
 
 .d_none_primary:hover {
+     /* ss */
      color: rgba(0, 123, 255, 1);
      background-color: white;
      border: rgba(0, 123, 255, 1) solid 2px;
 }
 
 .d_none_light {
+     /* ss */
      color: #000000;
      background-color: rgba(248, 249, 250, 1);
+     width: 142px;
 
      border: rgba(0, 123, 255, 1) solid 2px;
 }
 
 .d_none_light:hover {
+     /* ss */
      color: rgb(255, 255, 255);
      background-color: rgba(10, 35, 60, 0.5);
      border: rgba(0, 123, 255, 1) solid 2px;

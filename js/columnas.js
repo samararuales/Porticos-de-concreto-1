@@ -692,7 +692,7 @@ function calcularColumna() {
         if(NoVarillas<4){
             document.getElementById('cumpleNoVarilla').innerHTML=`La norma NSR-10 recomienda como cantidad mínima 4 varillas longitudinales y en este caso <b style="color:rgba(255,0,0,0.8);"> No cumple </b>&nbsp;`;
         }else{
-            document.getElementById('cumpleNoVarilla').innerHTML=``;
+            document.getElementById('cumpleNoVarilla').innerHTML=`La norma NSR-10 recomienda como cantidad mínima 4 varillas longitudinales y en este caso <b style="color:rgba(0,255,0,1);"> Si cumple </b>&nbsp;`;
         }
         if (separacion >= sep_minima && separacion <= separacionMaxima) {
             console.log(`Si cumple separacion entre varillas (${separacion}mm) >= sepMinima ${sep_minima} y ${separacion}<= separación máxima (${separacionMaxima}`);
