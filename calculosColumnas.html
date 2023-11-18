@@ -32,7 +32,8 @@
    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-zoom/1.0.0/chartjs-plugin-zoom.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-zoom/1.0.0/chartjs-plugin-zoom.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.1/purify.min.js"></script>
 
    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -633,9 +634,7 @@
                            </tbody>
                         </table>
                      </div>
-                     <br>
-                     <button class="btn btn-warning" id="boton_gra" disabled onclick="diagramaInteraccion()">Mostrar
-                        gráfico</button>
+
                   </div>
                   <div id="datos_acero" class="col-md-6">
                      <h2 class="text-center">Datos para acero</h2>
@@ -674,6 +673,9 @@
                      </div>
                   </div>
                </div>
+               <br>
+               <button class="btn btn-warning" id="boton_gra" disabled onclick="diagramaInteraccion()">Mostrar
+                  gráfico</button>
 
             </div>
 
@@ -682,7 +684,7 @@
       <br>
       <div class="container-fluid" style="display: none;" id="tabla_diagrama">
          <div class="row">
-            <div class="col">
+            <div class="col-12 col-lg-5">
                <div class="card">
                   <div class="card-header text-center">
                      <b> Tabla </b>
@@ -704,37 +706,60 @@
                   </div>
                </div>
             </div>
+            <style>
+               #grafico {
+                  overflow: auto;
+                  width: 100%;
+                  max-width: 541px;
+                  /* Puede ajustar este valor  */
+                  margin: 0 auto;
+               }
 
-            <div class="col">
+               #myChart {
+                  display: block;
+                  margin: 0 auto;
+               }
+            </style>
+            <div class="col-12 col-lg-7">
                <div class="card">
                   <div class="card-header text-center">
                      <b> Gráfico </b>
                   </div>
                   <div class="card-body">
+                     <!-- <div class="table-responsive">
+                        <div id="grafico">
+                           <canvas id="myChart" width="800" height="400"></canvas>
+                        </div>
+                     </div> -->
                      <div class="table-responsive">
-                        <canvas id="myChart"></canvas>
+                        <div id="grafico">
+                           <canvas id="myChart" width="541" height="271"></canvas>
+                        </div>
                      </div>
                      <hr>
                      <div class="row">
                         <div class="col-md-6">
                            <h6 class="card-title text-center"><b>Resistencia a compresión pura:</b></h6>
                            <h5 class="card-title text-center"><i><b>ϕPn</b> = 0.85 x F'<sub>c</sub> x (A<sub>g</sub> -
-                                 A<sub>s</sub>) + A<sub>s</sub> x F<sub>y</sub></i><br><i class="small">(NSR-10. C.19-1)</i></h5>
+                                 A<sub>s</sub>) + A<sub>s</sub> x F<sub>y</sub></i><br><i class="small">(NSR-10.
+                                 C.19-1)</i></h5>
                            <br>
                            <h6 class="card-title text-center"><b>Resistencia a tensión pura:</b></h6>
                            <h5 class="card-title text-center"><i><b>ϕPt</b> = A<sub>s</sub> x F<sub>y</sub></i><br><i
                                  class="small">(NSR-10. Sección C.10.3.7)</i></h5>
                         </div>
                         <div class="col-md-6">
-                           <h5>Donde: <br><b>F'<sub>c</sub></b> = Resistencia a la compresión del concreto<br><b>A<sub>g</sub></b> =
-                              Área total de la sección<br><b>A<sub>s</sub></b> = Área total refuerzo longitudinal<br><b>F<sub>y</sub></b>
+                           <h5>Donde: <br><b>F'<sub>c</sub></b> = Resistencia a la compresión del
+                              concreto<br><b>A<sub>g</sub></b> =
+                              Área total de la sección<br><b>A<sub>s</sub></b> = Área total refuerzo
+                              longitudinal<br><b>F<sub>y</sub></b>
                               = Esfuerzo de fluencia del acero</h5>
                         </div>
                      </div>
                   </div>
                </div>
             </div>
-            
+
          </div>
 
 

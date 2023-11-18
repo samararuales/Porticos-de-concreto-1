@@ -209,7 +209,7 @@ function diagramaInteraccion() {
         llenarTabla(listaMn, listaPn, listaPhiMn, listaPhiPn, h, longFibra);
         graficar(listaMn, listaPn, listaPhiMn, listaPhiPn);
 
-        
+
     }
 }
 
@@ -273,7 +273,7 @@ function graficar(listaMn, listaPn, listaPhiMn, listaPhiPn) {
     if (myChart !== null) {
         myChart.destroy();
     }
-    const x2=Math.ceil(Math.max(...listaMn)/10+1)*10;
+    const x2 = Math.ceil(Math.max(...listaMn) / 10 + 1) * 10;
     const x = [0, x2];
     const y1 = 0.75 * listaPhiPn[0];
     const y = [y1, y1];
@@ -282,8 +282,8 @@ function graficar(listaMn, listaPn, listaPhiMn, listaPhiPn) {
     listaPn.unshift(listaPn[0]);
     listaPhiMn.unshift(0);
     listaPhiPn.unshift(listaPhiPn[0]);
-
-    let ctx = document.getElementById('myChart').getContext('2d');
+    let canvas = document.getElementById('myChart');
+    let ctx = canvas.getContext('2d');
     myChart = new Chart(ctx, {
         type: 'line',
         data: {
@@ -315,44 +315,48 @@ function graficar(listaMn, listaPn, listaPhiMn, listaPhiPn) {
             ]
         },
         options: {
-            plugins: {
-                zoom: {
-                    zoom: {
-                        wheel: {
-                            enabled: true,
-                        },
-                        pinch: {
-                            enabled: true,
-                        },
-                        mode: 'xy',
-                    }
-                }
-            },
+            // responsive: true,
+            // maintainAspectRatio: false,
+            // plugins: {
+            //     zoom: {
+            //         zoom: {
+            //             wheel: {
+            //                 enabled: true,
+            //             },
+            //             pinch: {
+            //                 enabled: true,
+            //             },
+            //             mode: 'xy',
+            //         }
+            //     }
+            // },
 
-// Opciones del gráfico
-            pan: {
-                enabled: true,
-                mode: 'x'
-            },
-            zoom: {
-                enabled: true,
-                mode: 'x',
-            },
+            // // Opciones del gráfico
+            // pan: {
+            //     enabled: true,
+            //     mode: 'xy'
+            // },
+            // zoom: {
+            //     enabled: true,
+            //     mode: 'x',
+            // },
 
             scales: {
                 x: {
-                    beginAtZero: true,
-                    offset: true,
+                    // beginAtZero: true,
+                    // offset: true,
                     type: 'linear',
-                    // position: 'bottom',
+                    position: 'bottom',
                     title: {
                         display: true,
                         text: 'Momento M (KN-m)' // Etiqueta para el eje horizontal
                     }
                 },
                 y: {
-                    beginAtZero: true,
-                    offset: true,
+                    // beginAtZero: true,
+                    // offset: true,
+                    type: 'linear',
+                    position: 'left',
 
                     title: {
                         display: true,
@@ -362,4 +366,30 @@ function graficar(listaMn, listaPn, listaPhiMn, listaPhiPn) {
             }
         }
     });
+
+    // Agregar eventos táctiles al canvas
+
+    // // Agregar eventos táctiles con Hammer.js
+    // let hammer = new Hammer(document.getElementById('myChart'));
+    // hammer.get('pan').set({ direction: Hammer.DIRECTION_ALL });
+
+    // // Variables para el desplazamiento
+    // let offsetX = 0;
+    // // Función para manejar el evento de desplazamiento
+    // function onPan(event) {
+    //     if (event.isFinal) {
+    //         offsetX += event.deltaX; // Ajusta según tus necesidades
+    //         updateChart(); // Llama a una función para actualizar el gráfico
+    //     }
+    // }
+
+    // // Agregar el evento de desplazamiento al canvas
+    // hammer.on('pan', onPan);
+
+    // // Función para actualizar el gráfico después de hacer zoom o desplazar
+    // function updateChart() {
+    //     myChart.options.scales.x.min = offsetX;
+    //     myChart.options.scales.x.max = offsetX - 50; // Ajusta según tus necesidades
+    //     myChart.update();
+    // }
 }
