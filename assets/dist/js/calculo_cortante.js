@@ -176,48 +176,48 @@ function calcular_cortante() {
         document.getElementById('tabla_resultado_cortante').style.display = 'block';
 
         document.getElementById("resultado_cortante").innerHTML = `
-        <h1>Resumen de los valores calculados</h1>
-        <table class="peque">
-        <thead>
-            <tr>
-              <th scope="col">Dato</th>
-              <th scope="col">Valor</th>
-              <th scope="col">Unidades</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-              <td>d</td>
-              <td>${d.toFixed(2)}</td>
-              <td>mm</td>
-            </tr>
-            <tr>
-              <td>Separación longitudinal</td>
-              <td id="sep_Long">${separacion_longitudinal}</td>
-              <td>mm</td>
-            </tr>
-            <tr>
-              <td>Acero de refuerzo mínimo</td>
-              <td id="acero_ref_Min">${acero_refuerzo_minimo.toFixed(2)}</td>
-              <td>mm<sup>2</sup></td>
-            </tr>
-            <tr>
-              <td>Acero suministrado</td>
-              <td>${acero_suministrado}</td>
-              <td>mm<sup>2</sup></td>
-            </tr>
-            <tr>
-              <td>Cortante Nominal (Vn)</td>
-              <td id="res_OVN"></td>
-              <td>kN</td>
-            </tr>
-            <tr>
-              <td>Cortante Última (Vu)</td>
-              <td id="res_Vu">${Vu}</td>
-              <td>kN</td>
-            </tr>
-        </tbody>
-        </table>`;
+        <h1 class="display-5">Resumen de los valores calculados</h1>
+                        <table class="peque table-bordered">
+                           <thead>
+                              <tr>
+                                 <th scope="col">Dato</th>
+                                 <th scope="col">Valor</th>
+                                 <th scope="col">Unidades</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr>
+                                 <td>d</td>
+                                 <td>${d.toFixed(2)}</td>
+                                 <td>mm</td>
+                              </tr>
+                              <tr>
+                                 <td>Separación longitudinal</td>
+                                 <td id="sep_Long">${separacion_longitudinal}</td>
+                                 <td>mm</td>
+                              </tr>
+                              <tr>
+                                 <td>Acero de refuerzo mínimo</td>
+                                 <td id="acero_ref_Min">${acero_refuerzo_minimo.toFixed(2)}</td>
+                                 <td>mm<sup>2</sup></td>
+                              </tr>
+                              <tr>
+                                 <td>Acero suministrado</td>
+                                 <td>${acero_suministrado}</td>
+                                 <td>mm<sup>2</sup></td>
+                              </tr>
+                              <tr>
+                                 <td>Cortante Nominal (Vn)</td>
+                                 <td id="res_OVN"></td>
+                                 <td>kN</td>
+                              </tr>
+                              <tr>
+                                 <td>Cortante Última (Vu)</td>
+                                 <td id="res_Vu">${Vu}</td>
+                                 <td>kN</td>
+                              </tr>
+                           </tbody>
+                        </table>`;
 
         document.getElementById('avMinSep').innerHTML = '';
         //document.getElementById('acero_ref_Min').innerHTML = '';

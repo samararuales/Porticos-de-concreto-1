@@ -413,69 +413,70 @@ function calcular() {
       document.getElementById('tabla_resultado').style.display = 'block';
       document.getElementById("resultado").innerHTML = `
       <h2>Valores calculados</h2>
-            
-               <table class="peque">
-                  <thead>
-                     <tr>
-                        <th scope="col">Dato</th>
-                        <th scope="col">Valor</th>
-                        <th scope="col">Unidades</th>
-                     </tr>
-                  </thead>
-                  <tbody>
-                     <tr>
-                        <td>Pmin</td>
-                        <td>${roMin.toFixed(4)}</td>
-                        <td>&nbsp;</td>
-                     </tr>
-                     <tr>
-                        <td>d</td>
-                        <td>${d.toFixed(2)}</td>
-                        <td>mm</td>
-                     </tr>
-                     
-                     <tr>
-                        <td>AsMin</td>
-                        <td>${AsMin.toFixed(2)}</td>
-                        <td>mm<sup>2</sup></td>
-                     </tr>
-                     <tr>
-                        <td>Cantidad de Varillas</td>
-                        <td>${NoVarillas}</td>
-                        <td>und</td>
-                     </tr>
-                     <tr>
-                        <td>No. Varilla</td>
-                        <td>No. ${numeroVarilla}</td>
-                        <td>-</td>
-                     </tr>
-                     <tr>
-                        <td>AsMin suministrado</td>
-                        <td>${AsMin_Suministrado}</td>
-                        <td>mm<sup>2</sup></td>
-                     </tr>
-                     <tr>
-                        <td>Exceso de As</td>
-                        <td>${excesAs.toFixed(2)}</td>
-                        <td>%</td>
-                     </tr>
-                     <tr>
-                        <td>Separación entre varillas</td>
-                        <td>${separacion.toFixed(2)}</td>
-                        <td>mm</td>
-                     </tr>
-                     <tr>
-                        <td>Separación mínima</td>
-                        <td>${separacionMinimaBarras.toFixed(2)}</td>
-                        <td>mm</td>
-                     </tr>
-                     <tr>
-                        <td>Resistencia Nominal</td>
-                        <td>${resMn.toFixed(2)}</td>
-                        <td>kN - m</td>
-                     </tr>
-                  </tbody>
-               </table>
+                     <div class="table-responsive">
+                        <table class="peque">
+                           <thead>
+                              <tr>
+                                 <th scope="col">Dato</th>
+                                 <th scope="col">Valor</th>
+                                 <th scope="col">Unidades</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr>
+                                 <td>Pmin</td>
+                                 <td>${roMin.toFixed(4)}</td>
+                                 <td>&nbsp;</td>
+                              </tr>
+                              <tr>
+                                 <td>d</td>
+                                 <td>${d.toFixed(2)}</td>
+                                 <td>mm</td>
+                              </tr>
+
+                              <tr>
+                                 <td>AsMin</td>
+                                 <td>${AsMin.toFixed(2)}</td>
+                                 <td>mm<sup>2</sup></td>
+                              </tr>
+                              <tr>
+                                 <td>Cantidad de Varillas</td>
+                                 <td>${NoVarillas}</td>
+                                 <td>und</td>
+                              </tr>
+                              <tr>
+                                 <td>No. Varilla</td>
+                                 <td>No. ${numeroVarilla}</td>
+                                 <td>-</td>
+                              </tr>
+                              <tr>
+                                 <td>AsMin suministrado</td>
+                                 <td>${AsMin_Suministrado}</td>
+                                 <td>mm<sup>2</sup></td>
+                              </tr>
+                              <tr>
+                                 <td>Exceso de As</td>
+                                 <td>${excesAs.toFixed(2)}</td>
+                                 <td>%</td>
+                              </tr>
+                              <tr>
+                                 <td>Separación entre varillas</td>
+                                 <td>${separacion.toFixed(2)}</td>
+                                 <td>mm</td>
+                              </tr>
+                              <tr>
+                                 <td>Separación mínima</td>
+                                 <td>${separacionMinimaBarras.toFixed(2)}</td>
+                                 <td>mm</td>
+                              </tr>
+                              <tr>
+                                 <td>Resistencia Nominal</td>
+                                 <td>${resMn.toFixed(2)}</td>
+                                 <td>kN - m</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
             `;
       // ///Recomendar el menor exceso
       let menorExceso = minimoExceso(b, h, Fc, Fy, recubrimiento, diametroBarraEstribo, ag)[0];

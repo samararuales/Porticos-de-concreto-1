@@ -952,6 +952,7 @@ ul.re_post li {
      border: 1px solid rgba(0, 0, 0, 0.507);
      box-shadow: 4px 0 14px rgba(02, 3, 8, 0.20);
      height: 55px;
+     width: 120px;
 }
 
 .form-control:focus {
@@ -1068,7 +1069,7 @@ ul.re_post li {
      box-shadow: 4px 0 14px rgba(02, 3, 8, 0.20);
      height: 55px;
      max-width: 140px;
-     width: 130px;
+     width: 120px;
      font-size: 17px;
      font-weight: 400;
 }
@@ -1076,11 +1077,12 @@ ul.re_post li {
 .mpa {
      border-radius: 11px;
      padding: 0 5px;
+     margin: 0 5px;
      background: transparent;
      box-shadow: 4px 0 14px rgba(02, 3, 8, 0.20);
      height: 55px;
-     max-width: 100px;
-     width: 55px;
+     max-width: 120px;
+     width: 60px;
      font-size: 17px;
      font-weight: 400;
 }
@@ -1091,6 +1093,19 @@ ul.re_post li {
      padding: 5px;
      color: white;
 }
+
+.custom-input {
+     border-radius: 11px;
+     padding: 0 5px;
+     margin: 0 5px;
+     background: transparent;
+     box-shadow: 4px 0 14px rgba(2, 3, 8, 0.20);
+     height: 55px;
+     max-width: 130px;
+     width: 130px;
+     font-size: 17px;
+     font-weight: 400;
+  }
 
 .nota {
      color: rgb(0, 0, 0);

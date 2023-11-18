@@ -150,7 +150,7 @@ function resistencia(numeroVarilla, Fc, Fy, h, recubrimiento, diametro, diametro
 
       insertardatosTabla("superior", d, as_calcSup, NoVarillasSup, numeroVarilla, AsSuministradoSup, SupexcesAs, Supseparacion, SupseparacionMinimaBarras, resMnSup);
       document.getElementById("msgSup").innerHTML = `<div class="col-1">
-      <img src="./img/right.png"  ></div><div class="col-8">
+      <img src="./img/right.png"  ></div><div class="col-9">
       ${msgSup}</div>
       `;
       condicion_separacion('superior', Supseparacion, SupseparacionMinimaBarras,numeroVarilla);
@@ -181,7 +181,7 @@ function resistencia(numeroVarilla, Fc, Fy, h, recubrimiento, diametro, diametro
 
       insertardatosTabla("inferior", d, as_calcInf, NoVarillasInf, numeroVarilla, AsSuministradoInf, InfexcesAs, Infseparacion, InfseparacionMinimaBarras, resMnInf);
       document.getElementById("msgInf").innerHTML = `<div class="col-1">
-      <img src="./img/right.png"  ></div><div class="col-8">
+      <img src="./img/right.png"  ></div><div class="col-9">
       ${msgInf}</div>
       `;
       condicion_separacion('inferior', Infseparacion, InfseparacionMinimaBarras,numeroVarilla);
@@ -437,7 +437,7 @@ function recalcularResistencia(tabla) {
 
          insertardatosTabla(tabla, d, as_calcSup, NoVarillasSup, numeroVarillaSup, AsSuministradoSup, SupexcesAs, Supseparacion, SupseparacionMinimaBarras, resMnSup);
          document.getElementById(etiquetaMsg).innerHTML = `<div class="col-1">
-      <img src="./img/right.png"  ></div><div class="col-8">
+      <img src="./img/right.png"  ></div><div class="col-9">
       ${msgSup}</div>
       `;
          condicion_separacion(tabla, Supseparacion, SupseparacionMinimaBarras,numeroVarillaSup);
