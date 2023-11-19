@@ -206,7 +206,18 @@ button {
      margin-right: auto;
      margin-left: auto;
 }
+#grafico {
+     overflow: auto;
+     width: 100%;
+     max-width: 541px;
+     /* Puede ajustar este valor  */
+     margin: 0 auto;
+  }
 
+  #myChart {
+     display: block;
+     margin: 0 auto;
+  }
 
 /*---------------------------- preloader area ----------------------------*/
 
