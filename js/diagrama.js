@@ -315,32 +315,15 @@ function graficar(listaMn, listaPn, listaPhiMn, listaPhiPn) {
             ]
         },
         options: {
-            // responsive: true,
-            // maintainAspectRatio: false,
-            // plugins: {
-            //     zoom: {
-            //         zoom: {
-            //             wheel: {
-            //                 enabled: true,
-            //             },
-            //             pinch: {
-            //                 enabled: true,
-            //             },
-            //             mode: 'xy',
-            //         }
-            //     }
-            // },
+            
 
-            // // Opciones del gráfico
-            // pan: {
-            //     enabled: true,
-            //     mode: 'xy'
-            // },
-            // zoom: {
-            //     enabled: true,
-            //     mode: 'x',
-            // },
 
+
+   interaction: {
+      mode: 'index',
+      intersect: false,
+   },
+ 
             scales: {
                 x: {
                     // beginAtZero: true,
